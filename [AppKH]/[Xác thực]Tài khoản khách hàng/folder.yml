@@ -1,0 +1,7 @@
+info:
+  name: "[Xác thực]Tài khoản khách hàng"
+  type: folder
+  seq: 2
+
+request:
+  auth: inherit

@@ -1,0 +1,84 @@
+info:
+  name: Lấy thông tin profile
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{url}}/Auth/"
+  headers:
+    - name: x-api-key
+      value: "{{apiKey}}"
+    - name: from
+      value: web
+      disabled: true
+  body:
+    type: json
+    data: |-
+      {
+          "databody": "oa5TqtmnHJPuuieDo5uBTsv+OJ3xQkvDzdDNGnRLaZPQTzkBHve7hq9Wyo4dgztQ7xGUj9dQ+u8QJntgB7RHB5nZgPZaWZ/kId0bLfxCzDY=",
+          "Hash": "Ki47Q7UOqu1DJ7ffjXWhT3zuAZ8QO9HNxpl2YXgmG78="
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Nhân viên cửa hàng đăng nhập
+    request:
+      url: "{{url}}/Auth/Employee/Login"
+      method: POST
+      headers:
+        - name: x-api-key
+          value: "{{apiKey}}"
+        - name: from
+          value: web
+          disabled: true
+      body:
+        type: json
+        data: |-
+          {
+              "databody": "oa5TqtmnHJPuuieDo5uBTsv+OJ3xQkvDzdDNGnRLaZOO53HsRylSWtr5TIG6NZ/q",
+              "Hash": "s+Ips6FwiNY/UsB8prRZ+vpGl21ftSak+6pJENVN+5k="
+          }
+    response:
+      statusText: "200"
+      headers:
+        - name: Content-Length
+          value: "1177"
+        - name: Content-Type
+          value: application/json; charset=utf-8
+        - name: Date
+          value: Wed, 26 Mar 2025 02:52:04 GMT
+        - name: Server
+          value: Kestrel
+      body:
+        type: json
+        data: |-
+          {
+              "message": "Login success",
+              "metadata": {
+                  "EncodedData": "HhHPdW+heXlmlnfaDAsPXnLQ57QK4PSsBIfRI8UhzUiIjE1SGescUEEvMR6tpVE6/8DQT5E+39q4DiR6DuEkZJsySNFNnf63HtzNIOWEx6ysyX67owT2J1rUqWzlo7h2E5q8/RUznVTh4crmO2nx7i7R00BecScOdW+QKFE5TcAiM+Xl4Rmn1oHQrrHKTslQwD2Dzz/JNpcqmeHD1TWeMLOk4563m2CuuCA/eEx8xhcLeg88/fbfLnkxCgbjH9zJ7So1JAdEXMmtqf6YBJ7hrZYuLEKhLzENzPj53qiWoarzjWynpYRz1aCkQuioSlMETllVGzvs+hWr+0yOpwymb7ZI4ZRdR8gxrjVOaKx+7eiYcuETSIlWvc+g61j/RMuccJ4/LBQyyvl1XRb6aEPDDphuDynz3aBEnz8kiTU6uVAmzrDh7+OwXf2gbjqHCh5Qp9rfSl9dR9yCRqIMb5omfGhcE4YQYT8AJFIgp5/U6p4l2v3ycSpZiY/qiSYg2bjaIYnCUzeZnE9/CD3vlHLTlGnBLBE/L30ixl5s8ck51X3cw5gUBOm/0ioFqhxkWgVNFApGWBQNO1T4/olBCssfTm1clKANMtyX7yyH6TkEn5eVh6524baj0vY6PrIOdSubkO0fDu6yDoA8Tkvta8Q5NfmOVafLGdfQIGYuFRSPoveU0la+8B69i1SC7bp+J56c2q+0jkAJ6SZwXZ4EsIB5w2r62lSW6ksR6hQRFPnrun+t6cGe8ARzYjQ6Wb8nwPcZj0ukfu3Kj47VChycHYHd90fGuCMPuvUrgjXqo+NnaDH2OFVPScajUdmemzf6DhAh7+ElyMk/HFfoZk6DVrmWiqbqr4LqgqFux6C14DgeQ85Kx4iyFE08egzHZGfzdhHWCundnpWEGmSSKjX8oSBXjdCRm4nXPZSX28CdLzaVkToxCMwkmXKLreW7wkCMGLsfCQj+m37q80qivYnogNzUvfAiGb1+GrLknyNphNnowgR2Me2Mnt1PDigTAwY9m+BW7zJ6LRsfT7vM2ocZ1QA4ug==",
+                  "Hash": "Q4k1vSPTZPQR1xQfH4dl4IZK3TtOdYpgxKhiMgW2GFc="
+              },
+              "statusCodes": 200
+          }
+
+docs: |-
+  **Input: Chưa mã hoá**
+
+  ``` json
+  {    
+  "TokenNofitication": "xxx",    
+  "Device": "ios",    
+  "Account": "xxx",
+  "Password": "xxx"
+  }
+
+   ```

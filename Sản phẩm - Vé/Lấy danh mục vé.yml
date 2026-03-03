@@ -1,0 +1,122 @@
+info:
+  name: Lấy danh mục vé
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{url}}/Ticket/GetAllTicketPackage"
+  headers:
+    - name: x-api-key
+      value: "{{apiKey}}"
+    - name: from
+      value: web
+      disabled: true
+  body:
+    type: json
+    data: "{}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Lấy tấc cả danh mục loại vé
+    request:
+      url: "{{url}}/Ticket/GetAllTicketPackage"
+      method: POST
+      headers:
+        - name: x-api-key
+          value: "{{apiKey}}"
+        - name: from
+          value: web
+          disabled: true
+      body:
+        type: json
+        data: "{}"
+    response:
+      statusText: "200"
+      headers:
+        - name: Content-Length
+          value: "1069"
+        - name: Content-Type
+          value: application/json; charset=utf-8
+        - name: Date
+          value: Wed, 26 Mar 2025 07:31:55 GMT
+        - name: Server
+          value: Kestrel
+      body:
+        type: json
+        data: |-
+          {
+              "message": "Thành công",
+              "metadata": [
+                  {
+                      "ID": 1,
+                      "NameCode": "ngay_nguoi_lon",
+                      "Name": "Gói ngày người lớn",
+                      "AgeGroup": "Người lớn",
+                      "ExpiryDate": 1,
+                      "Price": 80000
+                  },
+                  {
+                      "ID": 2,
+                      "NameCode": "ngay_tre_em",
+                      "Name": "Gói ngày trẻ lớn",
+                      "AgeGroup": "Trẻ em",
+                      "ExpiryDate": 1,
+                      "Price": 50000
+                  },
+                  {
+                      "ID": 3,
+                      "NameCode": "thang_nguoi_lon",
+                      "Name": "Gói tháng người lớn",
+                      "AgeGroup": "Người lớn",
+                      "ExpiryDate": 30,
+                      "Price": 300000
+                  },
+                  {
+                      "ID": 4,
+                      "NameCode": "thang_tre_em",
+                      "Name": "Gói tháng trẻ em",
+                      "AgeGroup": "Trẻ em",
+                      "ExpiryDate": 30,
+                      "Price": 250000
+                  },
+                  {
+                      "ID": 5,
+                      "NameCode": "quy_nguoi_lon",
+                      "Name": "Gói quý người lớn",
+                      "AgeGroup": "Người lớn",
+                      "ExpiryDate": 90,
+                      "Price": 1500000
+                  },
+                  {
+                      "ID": 6,
+                      "NameCode": "quy_tre_em",
+                      "Name": "Gói quý trẻ em",
+                      "AgeGroup": "Trẻ em",
+                      "ExpiryDate": 90,
+                      "Price": 750000
+                  },
+                  {
+                      "ID": 7,
+                      "NameCode": "nam_nguoi_lon",
+                      "Name": "Gói năm người lớn",
+                      "AgeGroup": "Người lớn",
+                      "ExpiryDate": 365,
+                      "Price": 3650000
+                  },
+                  {
+                      "ID": 8,
+                      "NameCode": "nam_tre_em",
+                      "Name": "Gói năm trẻ em",
+                      "AgeGroup": "Trẻ em",
+                      "ExpiryDate": 365,
+                      "Price": 3500000
+                  }
+              ],
+              "statusCodes": 200
+          }

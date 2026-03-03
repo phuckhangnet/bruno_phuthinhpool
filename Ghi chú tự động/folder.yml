@@ -1,0 +1,7 @@
+info:
+  name: Ghi chú tự động
+  type: folder
+  seq: 27
+
+request:
+  auth: inherit

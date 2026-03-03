@@ -1,0 +1,7 @@
+info:
+  name: Lớp học của tôi
+  type: folder
+  seq: 6
+
+request:
+  auth: inherit

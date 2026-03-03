@@ -1,0 +1,26 @@
+info:
+  name: Kiểm tra vị trí
+  type: http
+  seq: 6
+
+http:
+  method: POST
+  url: "{{url}}/Check/CheckViTri"
+  headers:
+    - name: x-api-key
+      value: "{{apiKey}}"
+  body:
+    type: json
+    data: |-
+      {
+          "latitude": 10.751522986335985,
+          "longitude": 106.70273309548236,
+          "stringCheck": "Tphcm"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

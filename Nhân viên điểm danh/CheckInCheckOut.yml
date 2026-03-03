@@ -1,0 +1,23 @@
+info:
+  name: CheckInCheckOut
+  type: http
+  seq: 7
+
+http:
+  method: POST
+  url: "{{url}}/Check/CheckInCheckOut"
+  headers:
+    - name: x-api-key
+      value: "{{apiKey}}"
+    - name: userIdLogin
+      value: "14"
+  body:
+    type: json
+    data: '{"ChuoiCheck": "PhucKhangGems", "IDNguoiDung": 14, "IDThietBi": "0E685834-B344-4C3B-93CA-1C362000499A", "Lati": 10.7444176, "LoaiCheck": 1, "Longi": 106.6988011, "NenTangThietBi": "ios", "NgayGioCheck": "2025-08-04T09:50:56.340"}'
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

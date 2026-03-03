@@ -1,0 +1,60 @@
+info:
+  name: Lấy danh sách địa điểm
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{url}}/Check/GetDanhSachDiaDiemCheck"
+  headers:
+    - name: x-api-key
+      value: "{{apiKey}}"
+  body:
+    type: json
+    data: "{}"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Lấy danh sách địa điểm
+    request:
+      url: "{{url}}/Check/GetDanhSachDiaDiemCheck"
+      method: POST
+      headers:
+        - name: x-api-key
+          value: "{{apiKey}}"
+      body:
+        type: json
+        data: "{}"
+    response:
+      statusText: "200"
+      headers:
+        - name: Content-Length
+          value: "270"
+        - name: Content-Type
+          value: application/json; charset=utf-8
+        - name: Date
+          value: Fri, 18 Apr 2025 07:17:19 GMT
+        - name: Server
+          value: Kestrel
+      body:
+        type: json
+        data: |-
+          [
+              {
+                  "ID": 1,
+                  "TenDiaDiem": "Phú Thịnh Pool",
+                  "DiaChi": "D2 Đường 5B, KDC Him Lam, P. Tân Hưng, Quận 7",
+                  "MaCheck": "PhucKhangGems",
+                  "Latitude": "10.744393991504953",
+                  "Longitude": "106.69879981500583",
+                  "TrangThai": true,
+                  "NgayHeThong": "2025-02-21T09:24:36.46",
+                  "success": "01"
+              }
+          ]

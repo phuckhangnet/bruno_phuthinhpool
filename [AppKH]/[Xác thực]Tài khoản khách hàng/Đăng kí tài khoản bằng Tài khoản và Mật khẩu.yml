@@ -1,0 +1,89 @@
+info:
+  name: Đăng kí tài khoản bằng Tài khoản và Mật khẩu
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{url}}/Auth/Customer/RegistryWithAccount"
+  headers:
+    - name: x-api-key
+      value: "{{apiKey}}"
+    - name: from
+      value: web
+      disabled: true
+  body:
+    type: json
+    data: |-
+      {
+          "FirstName": "John",
+          "LastName": "Doe",
+          "Account": "hauphvnkh",
+          "Password": "123456",
+          "Email": "coderzeroonezero@gmail.com"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Đăng kí tài khoản
+    request:
+      url: "{{url}}/Auth/Customer/RegistryWithAccount"
+      method: POST
+      headers:
+        - name: x-api-key
+          value: "{{apiKey}}"
+        - name: from
+          value: web
+          disabled: true
+      body:
+        type: json
+        data: |-
+          {
+              "FirstName": "John",
+              "LastName": "Doe",
+              "Account": "hauphvnkh",
+              "Password": "123456",
+              "Email": "coderzeroonezero@gmail.com"
+          }
+    response:
+      statusText: "200"
+      headers:
+        - name: Content-Length
+          value: "73"
+        - name: Content-Type
+          value: application/json; charset=utf-8
+        - name: Date
+          value: Mon, 21 Apr 2025 10:44:18 GMT
+        - name: Server
+          value: Kestrel
+      body:
+        type: json
+        data: |-
+          {
+              "message": "Thành công",
+              "metadata": {
+                  "CustomerId": 58
+              },
+              "statusCodes": 200
+          }
+
+docs: |-
+  - **Input: Chưa mã hoá**
+      
+
+  ``` json
+  {      
+  "Account": "xxx",
+  "Password": "xxx",
+  "FirstName":"xxx",
+  "LastName":"xxx", // Họ và tên đệm
+  "Email":"xxx@xx.xx"
+  }
+
+   ```

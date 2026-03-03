@@ -1,0 +1,7 @@
+info:
+  name: Khách hàng
+  type: folder
+  seq: 7
+
+request:
+  auth: inherit

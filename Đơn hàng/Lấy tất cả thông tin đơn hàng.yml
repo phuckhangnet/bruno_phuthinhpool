@@ -1,0 +1,29 @@
+info:
+  name: Lấy tất cả thông tin đơn hàng
+  type: http
+  seq: 4
+
+http:
+  method: POST
+  url: "{{url}}/Order/Employee/GetAll"
+  headers:
+    - name: x-api-key
+      value: "{{apiKey}}"
+  body:
+    type: json
+    data: |-
+      {
+          "EmployeeId": 183,
+          "SearchText": "",
+          "PageNumber": 1,
+          "PageSize": 10,
+          "Sort": null, // ASC | DESC || null,
+          "OrderStatus":""  // DA_THANH_TOAN |  // CHO_THANH_TOAN | CHO_XAC_NHAN | null
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

@@ -1,0 +1,55 @@
+info:
+  name: Xác nhận đơn hàng
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{url}}/ZaloOA/SendMessageZaloOAMulti"
+  headers:
+    - name: x-api-key
+      value: "{{apiKey}}"
+  body:
+    type: json
+    data: |-
+      {
+          "loai": "dathangthanhcong",
+          "hotenkhachhang": "Phạm văn hậu test",
+          "template_id": "428614",
+          "order_code": "DH638823929561498143",
+          "creator_id": 14,
+          "phone": "0967900801"
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        var template = `
+        <style type="text/css">
+            .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}
+            .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}
+            .tftable tr {background-color:#ffffff;}
+            .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}
+            .tftable tr:hover {background-color:#e0ffff;}
+        </style>
+
+        <table class="tftable" border="1">
+            <tr>
+                <th>No Data Available</th>
+            </tr>
+        </table>
+        `;
+
+        function constructVisualizerPayload() {
+            return { response: res.getBody() };
+        }
+
+        // pm.visualizer.set(template, constructVisualizerPayload());
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

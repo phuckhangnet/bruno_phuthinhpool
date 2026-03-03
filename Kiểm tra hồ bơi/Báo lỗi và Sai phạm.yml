@@ -1,0 +1,82 @@
+info:
+  name: Báo lỗi và Sai phạm
+  type: http
+  seq: 5
+
+http:
+  method: POST
+  url: "{{url}}/InspectionPools/ReportError"
+  headers:
+    - name: x-api-key
+      value: "{{apiKey}}"
+  body:
+    type: json
+    data: |-
+      {
+          "CategoryId":2,
+          "UserId":55,
+          "PoolId":1,
+          "Error":"Còn rác kẹt trong lọc 11",
+          
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Danh sách hồ bơi
+    request:
+      url: "{{url}}/Pool/GetListPool"
+      method: POST
+      headers:
+        - name: x-api-key
+          value: "{{apiKey}}"
+    response:
+      statusText: "200"
+      headers:
+        - name: Content-Length
+          value: "466"
+        - name: Content-Type
+          value: application/json; charset=utf-8
+        - name: Date
+          value: Fri, 04 Apr 2025 09:59:16 GMT
+        - name: Server
+          value: Kestrel
+      body:
+        type: json
+        data: |-
+          {
+              "message": "Thành công",
+              "metadata": [
+                  {
+                      "Id": 1,
+                      "PoolCode": "PT",
+                      "PoolName": "Phú Thịnh",
+                      "LogoUrl": null,
+                      "PhoneNumber": null,
+                      "Email": null,
+                      "RepresentativeName": null,
+                      "Website": null,
+                      "PoolLevel": null,
+                      "ProvinceName": null,
+                      "ProvinceCode": null,
+                      "DistrictName": null,
+                      "DistrictCode": null,
+                      "WardName": null,
+                      "WardCode": null,
+                      "Address": null,
+                      "CountryName": null,
+                      "CountryCode": null,
+                      "ColorCode": null,
+                      "Latitude": null,
+                      "Longitude": null,
+                      "OpeningTime": null,
+                      "ClosingTime": null
+                  }
+              ],
+              "statusCodes": 200
+          }

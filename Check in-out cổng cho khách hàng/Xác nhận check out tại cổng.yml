@@ -1,0 +1,26 @@
+info:
+  name: Xác nhận check out tại cổng
+  type: http
+  seq: 7
+
+http:
+  method: POST
+  url: "{{url}}/CheckInOutCustomer/CheckOut/Confirm/AtTheGate"
+  headers:
+    - name: x-api-key
+      value: "{{apiKey}}"
+  body:
+    type: json
+    data: |-
+      {
+         // "CardCode":"296", //string | null  Cho trường hợp check out bằng thẻ bơi 
+          "OrderID": 701,// number | null Tuỳ chọn cho trường hợp check out từ chi tiết đơn hàng 
+          "EmployeeId":14
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

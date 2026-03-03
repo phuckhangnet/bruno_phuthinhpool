@@ -1,0 +1,72 @@
+info:
+  name: Mã hoá
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{url}}/ForTest/Encode"
+  headers:
+    - name: x-api-key
+      value: "{{apiKey}}"
+  body:
+    type: json
+    data: |-
+      {
+          // "Account": "Demo005",
+          // "Password": "710435",
+              "Account": "mydung",
+          "Password": "123456",
+          "TokenNofitication":"mydung"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Encode
+    request:
+      url: "{{url}}/ForTest/Encode"
+      method: POST
+      headers:
+        - name: x-api-key
+          value: "{{apiKey}}"
+      body:
+        type: json
+        data: |-
+          {
+              "TokenNofitication": "s1cQ6t4pH6esRy4ts5j/ZxGn8/RFzpkwn+fIcVW/EyLY+pLuYfd0kWqF4hr4Uh/A4O/9OzRYeeEse3qAg8kxQqYcQTA/oV",
+              "Device": "ios",
+              "Account": "hauphvn",
+              "Password": "123456"
+          }
+    response:
+      statusText: "200"
+      headers:
+        - name: Content-Type
+          value: application/json; charset=utf-8
+        - name: Date
+          value: Tue, 19 Nov 2024 10:11:56 GMT
+        - name: Server
+          value: Microsoft-IIS/10.0
+        - name: Content-Encoding
+          value: gzip
+        - name: Transfer-Encoding
+          value: chunked
+        - name: Vary
+          value: Accept-Encoding
+        - name: Request-Context
+          value: appId=cid-v1:7b29a27b-1ca8-4676-9588-932f5c4495e1
+        - name: X-Powered-By
+          value: ASP.NET
+      body:
+        type: json
+        data: |-
+          {
+              "EncodedData": "jOx71IJXJuZGL8XBOk1oRd725JR7tqxgKO4xpgJgK9j+QREd/dfC3kq94LU/KJoAR6345A2iOj2FDJxysGjkrvrY/P1TbGYhWz5ECkzTBO3FbqBwe/VgTpVT1FKO+RNGhEe1NkFLZSVw25I2osWO4TLoMiPA0JL0X8Du3bzj4qU8s0tASdi/J4Q0uVUVOwk+Oi29rRphB/TjjQBTK1cP3GdZHkXCqCLssExTVHDwrE32SMtGFT+vFRWsYEZrRlLG",
+              "Hash": "AduAWGGfFdOXlPSGcRdeeFieeYhqXLNN6KIht/f5hdE="
+          }

@@ -1,0 +1,129 @@
+info:
+  name: Kiểm tra trạng thái check in
+  type: http
+  seq: 5
+
+http:
+  method: POST
+  url: "{{url}}/CheckInOutCustomer/ForCustomer/GetCheckInStatus"
+  headers:
+    - name: x-api-key
+      value: "{{apiKey}}"
+  body:
+    type: json
+    data: |-
+      {
+           "CustomerId":2, // Tuỳ chọn cho khách hàng đã đăng nhập
+           //"DeviceId":"717e474033f01db2665233235fa7807c", // Tuỳ chọn cho khách vãng lai 
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Lấy thông tin sản phẩm đăng sử dụng
+    request:
+      url: "{{url}}/CheckInOutCustomer/ForCustomer/GetProductInfo"
+      method: POST
+      headers:
+        - name: x-api-key
+          value: "{{apiKey}}"
+      body:
+        type: json
+        data: |-
+          {
+               "CustomerId":2, // Tuỳ chọn cho khách hàng đã đăng nhập
+              // "DeviceId":"717e474033f01db2665233235fa7807c", // Tuỳ chọn cho khách vãng lai 
+          }
+    response:
+      statusText: "200"
+      headers:
+        - name: Content-Length
+          value: "1318"
+        - name: Content-Type
+          value: application/json; charset=utf-8
+        - name: Date
+          value: Wed, 09 Jul 2025 02:46:10 GMT
+        - name: Server
+          value: Kestrel
+      body:
+        type: json
+        data: |-
+          {
+              "message": "Thành công",
+              "metadata": {
+                  "CustomerId": 2,
+                  "FirstName": "Hậu",
+                  "LastName": "Phạm",
+                  "CheckInAt": "2025-07-09T09:46:03.4439477",
+                  "TotalPurchasedProductAmount": 1550000,
+                  "TotalRentingProductAmount": 75000,
+                  "TicketInfos": [
+                      {
+                          "TicketId": 1503,
+                          "TicketCode": "1503-815-1",
+                          "TicketPackageName": "Vé ngày trẻ em",
+                          "TicketPackageCode": "luot_tre_em",
+                          "TicketPrice": 20000,
+                          "TicketQuantity": 1
+                      }
+                  ],
+                  "AccessoryInfos": [
+                      {
+                          "AccessoryId": 131,
+                          "AccessoryName": "Đồ bơi",
+                          "AccessoryPrice": 30000,
+                          "ForRent": true,
+                          "AccessoryQuantity": 1
+                      },
+                      {
+                          "AccessoryId": 136,
+                          "AccessoryName": "Phao bơi trẻ em",
+                          "AccessoryPrice": 45000,
+                          "ForRent": true,
+                          "AccessoryQuantity": 1
+                      },
+                      {
+                          "AccessoryId": 112,
+                          "AccessoryName": "Súng Nước Size lớn",
+                          "AccessoryPrice": 1500000,
+                          "ForRent": false,
+                          "AccessoryQuantity": 1
+                      }
+                  ],
+                  "FoodAndDrinkInfos": [
+                      {
+                          "FoodAndDrinkId": 91,
+                          "FoodAndDrinkName": "Mì Siukay",
+                          "FoodAndDrinkPrice": 15000,
+                          "FoodAndDrinkQuantity": 2
+                      }
+                  ],
+                  "ClassesInfos": [
+                      {
+                          "ClassId": 24,
+                          "ClassName": "Lớp bơi sáng sớm",
+                          "ClassCode": "LH9600C11C",
+                          "ClassStatus": "DANG_MO",
+                          "ClassStartTime": "05:00:00",
+                          "ClassEndTime": "18:01:00",
+                          "DateStart": "2025-07-07T00:00:00",
+                          "DateEnd": "2025-07-31T00:00:00",
+                          "IsMonday": false,
+                          "IsTuesday": false,
+                          "IsWednesday": true,
+                          "IsThursday": true,
+                          "IsFriday": true,
+                          "IsSaturday": false,
+                          "IsSunday": false,
+                          "OrderDetailId": null
+                      }
+                  ],
+                  "ComboInfos": []
+              },
+              "statusCodes": 200
+          }

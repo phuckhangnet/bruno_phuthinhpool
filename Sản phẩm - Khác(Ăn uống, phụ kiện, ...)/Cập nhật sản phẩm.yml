@@ -1,0 +1,38 @@
+info:
+  name: Cập nhật sản phẩm
+  type: http
+  seq: 4
+
+http:
+  method: POST
+  url: "{{url}}/Product/Update"
+  headers:
+    - name: x-api-key
+      value: pkn
+  body:
+    type: json
+    data: |-
+      {
+          "ProductId": 47,
+          "ProductType": "PHU_KIEN", // AN_UONG | PHU_KIEN
+          "FoodGroup": null, // DO_AN | NUOC_UONG,
+          "AccessoryGroup": "PHU_KIEN", // DO_CHOI | PHU_KIEN
+          "ProductName": "Quần bơi nam mới 2025",
+          "Description": "Quần bơi",
+          "IsForRent": false,
+          "StoreId": 1,
+          "Quantity": 100,
+          "UnitId": 1,
+          "WarrantyPeriodId": 0,
+          "IsAvailableOnline": true,
+          "DiscountPercentage": 5.0,
+          "PurchasePrice": 100000,
+          "SalePrice": 200000
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

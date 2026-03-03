@@ -1,0 +1,89 @@
+info:
+  name: Lấy danh mục loại ghi chú
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{url}}/Notes/Categories/GetAll"
+  headers:
+    - name: x-api-key
+      value: "{{apiKey}}"
+  body:
+    type: json
+    data: |-
+      {
+          "Status":"DANG_HOAT_DONG" // DANG_HOAT_DONG | DA_HUY
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Hồ bơi mới
+    request:
+      url: "{{url}}/Pool/AddNew"
+      method: POST
+      headers:
+        - name: x-api-key
+          value: "{{apiKey}}"
+      body:
+        type: multipart-form
+        data:
+          - name: PoolCode
+            type: text
+            value: PT
+          - name: PoolName
+            type: text
+            value: Phú Thịnh
+          - name: Image
+            type: file
+            value:
+              - postman-cloud:///1f00c6c1-216a-42c0-8efa-9453d804d894
+    response:
+      statusText: "200"
+      headers:
+        - name: Content-Length
+          value: "485"
+        - name: Content-Type
+          value: application/json; charset=utf-8
+        - name: Date
+          value: Fri, 04 Apr 2025 09:42:54 GMT
+        - name: Server
+          value: Kestrel
+      body:
+        type: json
+        data: |-
+          {
+              "message": "Thành công",
+              "metadata": {
+                  "Id": 1,
+                  "PoolCode": null,
+                  "PoolName": "Phú Thịnh",
+                  "LogoUrl": "/_imageslibrary/pools/1",
+                  "PhoneNumber": null,
+                  "Email": null,
+                  "RepresentativeName": null,
+                  "Website": null,
+                  "PoolLevel": null,
+                  "ProvinceName": null,
+                  "ProvinceCode": null,
+                  "DistrictName": null,
+                  "DistrictCode": null,
+                  "WardName": null,
+                  "WardCode": null,
+                  "Address": null,
+                  "CountryName": null,
+                  "CountryCode": null,
+                  "ColorCode": null,
+                  "Latitude": null,
+                  "Longitude": null,
+                  "OpeningTime": null,
+                  "ClosingTime": null
+              },
+              "statusCodes": 200
+          }

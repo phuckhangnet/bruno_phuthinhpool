@@ -1,0 +1,7 @@
+info:
+  name: "[Xác thực]Tài khoản nhân viên"
+  type: folder
+  seq: 3
+
+request:
+  auth: inherit

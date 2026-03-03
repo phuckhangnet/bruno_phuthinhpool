@@ -1,0 +1,212 @@
+info:
+  name: Tạo mới nhân viên
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{url}}/Employee/AddNew"
+  headers:
+    - name: x-api-key
+      value: "{{apiKey}}"
+  body:
+    type: multipart-form
+    data:
+      - name: FirstName
+        type: text
+        value: Long nv141
+      - name: LastName
+        type: text
+        value: Antony nv151
+      - name: Email
+        type: text
+        value: Hauphvn152@gmail.com
+      - name: PhoneNumber
+        type: text
+        value: "0967900152"
+      - name: NationalId
+        type: text
+        value: "0123456789"
+      - name: DateOfBirth
+        type: text
+        value: 2025-02-18
+      - name: Notes
+        type: text
+        value: "Fan cứng "
+      - name: Account
+        type: text
+        value: hauphvn152
+      - name: RoleCode
+        type: text
+        value: phucvu
+      - name: Gender
+        type: text
+        value: "1"
+        description: 0 | 1
+      - name: Certificates
+        type: text
+        value: |-
+          [
+            { 
+              "ID": "Id1",
+              "CertificateName": "Chứng chỉ bơi 1", 
+              "Notes": "Bảng sao chứng chỉ",
+              "ExpiryDate": "2025-02-16" 
+            },
+            { 
+              "ID": "Id2",
+              "CertificateName": "Chứng chỉ bơi 2", 
+              "Notes": "",
+              "ExpiryDate": "2026-02-18" 
+            }
+          ]
+        description: Mảng object có định dạng như mô tả. Stringify về dạng string
+        disabled: true
+      - name: CertificateFiles_Id1
+        type: file
+        value:
+          - postman-cloud:///1f00e175-4ea8-4e20-9022-57fadf702bbc
+        description: "Id1: là tương ứng với ID trong item 1 trong key: Certificates"
+        disabled: true
+      - name: CertificateFiles_Id2
+        type: file
+        value:
+          - postman-cloud:///1f00e175-c59e-4fc0-9db7-a0dae85500ce
+        description: "Id2: là tương ứng với ID trong item 2 trong key: Certificates"
+        disabled: true
+      - name: ContractType
+        type: text
+        value: chinh_thuc
+        description: chinh_thuc | hop_dong | thu_viec
+      - name: StateName
+        type: text
+        value: Đồng Nai
+        description: |
+          Tên tỉnh
+      - name: CityName
+        type: text
+        value: TP. Biên Hòa
+        description: Tên quận huyện/thành phố(cấp dưới sau khi chọn tỉnh thành)
+      - name: Address
+        type: text
+        value: 15 Nguyễn Bỉnh Khiêm, Long Khánh
+        description: "Địa chỉ chi tiết "
+      - name: CountryName
+        type: text
+        value: Việt Nam
+        description: "Tên quốc gia "
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Tạo mới nhân viên
+    request:
+      url: "{{url}}/Employee/AddNew"
+      method: POST
+      headers:
+        - name: x-api-key
+          value: "{{apiKey}}"
+      body:
+        type: multipart-form
+        data:
+          - name: FirstName
+            type: text
+            value: Long nv
+          - name: LastName
+            type: text
+            value: Antony nv
+          - name: Email
+            type: text
+            value: hauphvn6@gmail.com
+          - name: PhoneNumber
+            type: text
+            value: "0967900802"
+          - name: NationalId
+            type: text
+            value: "0123456789"
+          - name: DateOfBirth
+            type: text
+            value: 2025-02-18
+          - name: Notes
+            type: text
+            value: "Fan cứng "
+          - name: Account
+            type: text
+            value: hauphvn6
+          - name: RoleCode
+            type: text
+            value: phucvu
+          - name: Gender
+            type: text
+            value: "1"
+            description: 0 | 1
+          - name: Certificates
+            type: text
+            value: |-
+              [
+                { 
+                  "ID": "Id1",
+                  "CertificateName": "Chứng chỉ bơi 1", 
+                  "Notes": "Bảng sao chứng chỉ",
+                  "ExpiryDate": "2025-02-16" 
+                },
+                { 
+                  "ID": "Id2",
+                  "CertificateName": "Chứng chỉ bơi 2", 
+                  "Notes": "",
+                  "ExpiryDate": "2026-02-18" 
+                }
+              ]
+            description: Mảng object có định dạng như mô tả. Stringify về dạng string
+          - name: CertificateFiles_Id1
+            type: file
+            value:
+              - postman-cloud:///1f00e175-4ea8-4e20-9022-57fadf702bbc
+            description: "Id1: là tương ứng với ID trong item 1 trong key: Certificates"
+          - name: CertificateFiles_Id2
+            type: file
+            value:
+              - postman-cloud:///1f00e175-c59e-4fc0-9db7-a0dae85500ce
+            description: "Id2: là tương ứng với ID trong item 2 trong key: Certificates"
+          - name: ContractType
+            type: text
+            value: chinh_thuc
+            description: chinh_thuc | hop_dong | thu_viec
+    response:
+      statusText: "200"
+      headers:
+        - name: Content-Length
+          value: "277"
+        - name: Content-Type
+          value: application/json; charset=utf-8
+        - name: Date
+          value: Wed, 02 Apr 2025 02:35:05 GMT
+        - name: Server
+          value: Kestrel
+      body:
+        type: json
+        data: |-
+          {
+              "message": "Thành công",
+              "metadata": {
+                  "EmployeeID": 46,
+                  "CertificateUploaded": [
+                      {
+                          "CertificateID": 25,
+                          "CertificateName": "Chứng chỉ bơi 1",
+                          "CertificateFile": "25.pdf"
+                      },
+                      {
+                          "CertificateID": 26,
+                          "CertificateName": "Chứng chỉ bơi 2",
+                          "CertificateFile": "26.pdf"
+                      }
+                  ]
+              },
+              "statusCodes": 200
+          }

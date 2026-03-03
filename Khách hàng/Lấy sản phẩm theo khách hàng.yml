@@ -1,0 +1,28 @@
+info:
+  name: Lấy sản phẩm theo khách hàng
+  type: http
+  seq: 5
+
+http:
+  method: POST
+  url: "{{url}}/Customer/Products/GetAll"
+  headers:
+    - name: x-api-key
+      value: "{{apiKey}}"
+  body:
+    type: json
+    data: |-
+      {
+          "CustomerID": 102,
+          "SearchText": "",
+          "PageNumber": 1,
+          "PageSize": 100,
+          "Sort": "desc" // ASC | DESC || null - Sắp xếp theo tên sp.
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

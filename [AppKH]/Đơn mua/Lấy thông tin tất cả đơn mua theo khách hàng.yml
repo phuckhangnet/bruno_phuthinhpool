@@ -1,0 +1,28 @@
+info:
+  name: Lấy thông tin tất cả đơn mua theo khách hàng
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{url}}/Order/Customer/GetMyOrder"
+  headers:
+    - name: x-api-key
+      value: "{{apiKey}}"
+  body:
+    type: json
+    data: |-
+      {
+      //    "CustomerId":59,
+          "DeviceId":"717e474033f01db2665233235fa7807c",
+          "SearchText":"",
+          "PageNumber":1,
+          "PageSize":10
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

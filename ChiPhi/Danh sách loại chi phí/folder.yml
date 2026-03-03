@@ -1,0 +1,7 @@
+info:
+  name: Danh sách loại chi phí
+  type: folder
+  seq: 1
+
+request:
+  auth: inherit

@@ -1,0 +1,7 @@
+info:
+  name: Đã sử dụng
+  type: folder
+  seq: 4
+
+request:
+  auth: inherit

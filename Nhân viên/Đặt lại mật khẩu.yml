@@ -1,0 +1,62 @@
+info:
+  name: Đặt lại mật khẩu
+  type: http
+  seq: 7
+
+http:
+  method: POST
+  url: "{{url}}/Employee/ResetPassword"
+  headers:
+    - name: x-api-key
+      value: "{{apiKey}}"
+  body:
+    type: json
+    data: |-
+      {
+          "EmployeeID":50
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Đặt lại mật khẩu
+    request:
+      url: "{{url}}/Employee/ResetPassword"
+      method: POST
+      headers:
+        - name: x-api-key
+          value: "{{apiKey}}"
+      body:
+        type: json
+        data: |-
+          {
+              "EmployeeID":50
+          }
+    response:
+      statusText: "200"
+      headers:
+        - name: Content-Length
+          value: "73"
+        - name: Content-Type
+          value: application/json; charset=utf-8
+        - name: Date
+          value: Fri, 11 Apr 2025 07:39:04 GMT
+        - name: Server
+          value: Kestrel
+      body:
+        type: json
+        data: |-
+          {
+              "message": "Thành công",
+              "metadata": {
+                  "EmployeeID": 50
+              },
+              "statusCodes": 200
+          }

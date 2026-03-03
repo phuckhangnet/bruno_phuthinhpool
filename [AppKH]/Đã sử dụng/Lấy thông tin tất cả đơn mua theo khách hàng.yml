@@ -1,0 +1,189 @@
+info:
+  name: Lấy thông tin tất cả đơn mua theo khách hàng
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{url}}/Order/Customer/Used/GetAll"
+  headers:
+    - name: x-api-key
+      value: "{{apiKey}}"
+  body:
+    type: json
+    data: |-
+      {
+          "CustomerId": 2,
+          //"DeviceId":"0E685834-B344-4C3B-93CA-1C362000499A",
+          "SearchText": "",
+          "PageNumber": 1,
+          "PageSize": 10,
+          "CategoryName":""//  "VE_BOI", "PHU_KIEN", "AN_UONG"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Lấy thông tin tất cả đơn mua theo khách hàng
+    request:
+      url: "{{url}}/Order/Customer/Used/GetAll"
+      method: POST
+      headers:
+        - name: x-api-key
+          value: "{{apiKey}}"
+      body:
+        type: json
+        data: |-
+          {
+              "CustomerId": 2,
+              //"DeviceId":"0E685834-B344-4C3B-93CA-1C362000499A",
+              "SearchText": "",
+              "PageNumber": 1,
+              "PageSize": 10,
+              "CategoryName":""//  "VE_BOI", "PHU_KIEN", "AN_UONG"
+          }
+    response:
+      statusText: "200"
+      headers:
+        - name: Content-Length
+          value: "1766"
+        - name: Content-Type
+          value: application/json; charset=utf-8
+        - name: Date
+          value: Thu, 17 Jul 2025 07:37:05 GMT
+        - name: Server
+          value: Kestrel
+      body:
+        type: json
+        data: |-
+          {
+              "message": "Thành công",
+              "metadata": {
+                  "TotalCount": 6,
+                  "Items": [
+                      {
+                          "ProductName": "Vé ngày trẻ em",
+                          "CategoryName": "VE_BOI",
+                          "UnitPrice": 20000,
+                          "Quantity": 4,
+                          "InfoDateCheckInToUsedList": [
+                              {
+                                  "DateUsing": "2025-07-17",
+                                  "TimeIn": "11:40:00",
+                                  "TimeOut": "11:43:00",
+                                  "Quantity": 1
+                              },
+                              {
+                                  "DateUsing": "2025-07-17",
+                                  "TimeIn": "13:53:00",
+                                  "TimeOut": "00:00:00",
+                                  "Quantity": 1
+                              },
+                              {
+                                  "DateUsing": "2025-07-17",
+                                  "TimeIn": "13:53:00",
+                                  "TimeOut": "00:00:00",
+                                  "Quantity": 1
+                              },
+                              {
+                                  "DateUsing": "2025-07-17",
+                                  "TimeIn": "13:53:00",
+                                  "TimeOut": "00:00:00",
+                                  "Quantity": 1
+                              }
+                          ]
+                      },
+                      {
+                          "ProductName": "Súng",
+                          "CategoryName": "PHU_KIEN",
+                          "UnitPrice": 200000,
+                          "Quantity": 1,
+                          "InfoDateCheckInToUsedList": [
+                              {
+                                  "DateUsing": "2025-07-17",
+                                  "TimeIn": "11:40:00",
+                                  "TimeOut": "11:43:00",
+                                  "Quantity": 1
+                              }
+                          ]
+                      },
+                      {
+                          "ProductName": "Súng Nước Size lớn",
+                          "CategoryName": "PHU_KIEN",
+                          "UnitPrice": 1500000,
+                          "Quantity": 1,
+                          "InfoDateCheckInToUsedList": [
+                              {
+                                  "DateUsing": "2025-07-17",
+                                  "TimeIn": "11:40:00",
+                                  "TimeOut": "11:43:00",
+                                  "Quantity": 1
+                              }
+                          ]
+                      },
+                      {
+                          "ProductName": "Tokpokki phô mai",
+                          "CategoryName": "AN_UONG",
+                          "UnitPrice": 20000,
+                          "Quantity": 1,
+                          "InfoDateCheckInToUsedList": [
+                              {
+                                  "DateUsing": "2025-07-17",
+                                  "TimeIn": "11:40:00",
+                                  "TimeOut": "11:43:00",
+                                  "Quantity": 1
+                              }
+                          ]
+                      },
+                      {
+                          "ProductName": "Mì Siukay",
+                          "CategoryName": "AN_UONG",
+                          "UnitPrice": 15000,
+                          "Quantity": 3,
+                          "InfoDateCheckInToUsedList": [
+                              {
+                                  "DateUsing": "2025-07-17",
+                                  "TimeIn": "11:40:00",
+                                  "TimeOut": "11:43:00",
+                                  "Quantity": 1
+                              },
+                              {
+                                  "DateUsing": "2025-07-17",
+                                  "TimeIn": "13:53:00",
+                                  "TimeOut": "00:00:00",
+                                  "Quantity": 1
+                              },
+                              {
+                                  "DateUsing": "2025-07-17",
+                                  "TimeIn": "13:53:00",
+                                  "TimeOut": "00:00:00",
+                                  "Quantity": 1
+                              }
+                          ]
+                      },
+                      {
+                          "ProductName": "Vé ngày người lớn",
+                          "CategoryName": "VE_BOI",
+                          "UnitPrice": 30000,
+                          "Quantity": 1,
+                          "InfoDateCheckInToUsedList": [
+                              {
+                                  "DateUsing": "2025-07-17",
+                                  "TimeIn": "13:53:00",
+                                  "TimeOut": "00:00:00",
+                                  "Quantity": 1
+                              }
+                          ]
+                      }
+                  ],
+                  "PageNumber": 1,
+                  "PageSize": 10,
+                  "TotalPages": 1
+              },
+              "statusCodes": 200
+          }

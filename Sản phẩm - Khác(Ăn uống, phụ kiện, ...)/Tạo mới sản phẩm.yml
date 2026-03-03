@@ -1,0 +1,38 @@
+info:
+  name: Tạo mới sản phẩm
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{url}}/Product/AddNew"
+  headers:
+    - name: x-api-key
+      value: pkn
+  body:
+    type: json
+    data: |-
+      {
+          "ProductType":"PHU_KIEN", // AN_UONG | PHU_KIEN
+          "FoodGroup": "", // DO_AN | NUOC_UONG,
+          "AccessoryGroup":"DO_CHOI", // DO_CHOI | PHU_KIEN
+          "ProductName": "Tượng cá vàng",
+          "Description": "Sản phẩm tô tượng cho trẻ",
+          "IsForRent": false,
+          "StoreId": 1,
+          "Quantity": 100,
+          "UnitId": 4,
+          "WarrantyPeriodId": 1,
+          "IsAvailableOnline": true,
+          "DiscountPercentage": 0,
+          "PurchasePrice": 50000,
+          "SalePrice": 60000
+         
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

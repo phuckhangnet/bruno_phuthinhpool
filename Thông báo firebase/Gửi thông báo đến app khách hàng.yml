@@ -1,0 +1,74 @@
+info:
+  name: Gửi thông báo đến app khách hàng
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{url}}/PushNotificationV2/GuiThongBaoDenKhachHangQuaAppToken"
+  headers:
+    - name: x-api-key
+      value: "{{apiKey}}"
+  body:
+    type: json
+    data: |-
+      {
+          "body": "Test",
+          "idsKhachHang": [
+              542
+          ],
+          "title": "Test"
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: DangKyDungThuUngDung
+    request:
+      url: "{{url}}/SendEmail/DangKyDungThuUngDung"
+      method: POST
+      headers:
+        - name: x-api-key
+          value: "{{apiKey}}"
+      body:
+        type: json
+        data: |-
+          {
+              "fullName":"Pham van hau",
+              "email":"hauphvn@gmail.com",
+              "phoneNumber":"0987654321"
+          }
+    response:
+      statusText: "200"
+      headers:
+        - name: Content-Type
+          value: application/json; charset=utf-8
+        - name: Date
+          value: Tue, 19 Nov 2024 10:03:19 GMT
+        - name: Server
+          value: Microsoft-IIS/10.0
+        - name: Content-Encoding
+          value: gzip
+        - name: Transfer-Encoding
+          value: chunked
+        - name: Vary
+          value: Accept-Encoding
+        - name: Request-Context
+          value: appId=cid-v1:7b29a27b-1ca8-4676-9588-932f5c4495e1
+        - name: X-Powered-By
+          value: ASP.NET
+      body:
+        type: json
+        data: |-
+          {
+              "message": "Success",
+              "metadata": "Send email success",
+              "statusCodes": 200
+          }

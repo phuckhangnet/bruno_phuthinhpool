@@ -1,0 +1,65 @@
+info:
+  name: Cập nhật hồ bơi
+  type: http
+  seq: 4
+
+http:
+  method: POST
+  url: "{{url}}/Pool/UpdatePool"
+  headers:
+    - name: x-api-key
+      value: "{{apiKey}}"
+  body:
+    type: text
+    data: ""
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Cập nhật hồ bơi
+    request:
+      url: "{{url}}/Pool/UpdatePool"
+      method: POST
+      headers:
+        - name: x-api-key
+          value: "{{apiKey}}"
+      body:
+        type: multipart-form
+        data:
+          - name: Id
+            type: text
+            value: "1"
+          - name: PoolCode
+            type: text
+            value: PT
+            disabled: true
+          - name: Image
+            type: file
+            value:
+              - postman-cloud:///1ef9272e-a129-4c70-a357-d62f79b622b1
+    response:
+      statusText: "200"
+      headers:
+        - name: Content-Length
+          value: "68"
+        - name: Content-Type
+          value: application/json; charset=utf-8
+        - name: Date
+          value: Tue, 08 Apr 2025 07:49:27 GMT
+        - name: Server
+          value: Kestrel
+      body:
+        type: json
+        data: |-
+          {
+              "message": "Thành công",
+              "metadata": {
+                  "PoolId": 1
+              },
+              "statusCodes": 200
+          }

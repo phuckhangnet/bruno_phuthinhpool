@@ -1,0 +1,7 @@
+info:
+  name: Thông tin thẻ
+  type: folder
+  seq: 1
+
+request:
+  auth: inherit

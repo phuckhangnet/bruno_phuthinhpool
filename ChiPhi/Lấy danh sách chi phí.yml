@@ -1,0 +1,32 @@
+info:
+  name: Lấy danh sách chi phí
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{url}}/Cost/GetAll"
+  headers:
+    - name: x-api-key
+      value: "{{apiKey}}"
+    - name: userIdLogin
+      value: "14"
+  body:
+    type: json
+    data: |-
+      {
+          "SearchText": "",
+          "PageNumber": 1,
+          "PageSize": 10,
+          "Sort": null, // ASC | DESC || null,
+          "OccurredDateFrom":"2025-07-15",
+          "OccurredDateTo":"2025-07-16",
+          "CategoryTypes":["TIEN_NUOC"]
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

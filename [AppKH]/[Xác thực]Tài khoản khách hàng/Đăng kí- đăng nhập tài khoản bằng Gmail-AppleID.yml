@@ -1,0 +1,46 @@
+info:
+  name: Đăng kí/ đăng nhập tài khoản bằng Gmail/AppleID
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{url}}/Auth/Customer/SignInSignUpWithSocial"
+  headers:
+    - name: x-api-key
+      value: "{{apiKey}}"
+    - name: from
+      value: web
+      disabled: true
+  body:
+    type: json
+    data: |-
+      {
+          "Provider": "apple", // "google" | "apple"
+          "TokenNotification": "token login with apple",
+          "DeviceId": "postman",
+          // "Email": "google1@google.com" // Only for provider is google,
+          "AppleId":"001626.1403627575584677932cc2ba28c3b89e.0540" // Only for provider is apple
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  - **Input: Chưa mã hoá**
+      
+
+  ``` json
+  {      
+  "Account": "xxx",
+  "Password": "xxx",
+  "FirstName":"xxx",
+  "LastName":"xxx", // Họ và tên đệm
+  "Email":"xxx@xx.xx"
+  }
+
+   ```

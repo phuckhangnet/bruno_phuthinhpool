@@ -1,0 +1,328 @@
+info:
+  name: Lấy khách hàng theo số điện thoại
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{url}}/Customer/GetDetailByPhone"
+  headers:
+    - name: x-api-key
+      value: "{{apiKey}}"
+  body:
+    type: json
+    data: |-
+      {
+          "PhoneNumber": "0967900801"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Lấy danh sách khách hàng
+    request:
+      url: "{{url}}/Customer/GetListCustomer"
+      method: POST
+      headers:
+        - name: x-api-key
+          value: "{{apiKey}}"
+      body:
+        type: json
+        data: |-
+          {
+              "SearchText": "",
+              "Status": "",// locked || active
+              "PageNumber": 1,
+              "PageSize": 10
+          }
+    response:
+      statusText: "200"
+      headers:
+        - name: Content-Length
+          value: "5299"
+        - name: Content-Type
+          value: application/json; charset=utf-8
+        - name: Date
+          value: Tue, 08 Apr 2025 02:19:56 GMT
+        - name: Server
+          value: Kestrel
+      body:
+        type: json
+        data: |-
+          {
+              "message": "Success",
+              "metadata": {
+                  "TotalCount": 13,
+                  "Items": [
+                      {
+                          "CardTypeId": null,
+                          "CardNumber": null,
+                          "Title": null,
+                          "LastName": "a",
+                          "FirstName": "khang",
+                          "PhoneNumber": null,
+                          "Address": null,
+                          "City": null,
+                          "StateCode": null,
+                          "CountryCode": null,
+                          "CountryName": null,
+                          "StateName": null,
+                          "DistrictName": null,
+                          "DistrictCode": null,
+                          "Email": "ntnk1984@gmail.com",
+                          "NationalId": null,
+                          "Birthday": null,
+                          "Account": null,
+                          "Password": null,
+                          "StoreId": null,
+                          "Status": "LOCKED",
+                          "Gender": null,
+                          "Notes": null,
+                          "Image": ""
+                      },
+                      {
+                          "CardTypeId": null,
+                          "CardNumber": null,
+                          "Title": "Anh",
+                          "LastName": "Antony",
+                          "FirstName": "Long 1",
+                          "PhoneNumber": "0967900801",
+                          "Address": "123 Trần hưng đạo 1",
+                          "City": "Hồ chí minh",
+                          "StateCode": "hcm",
+                          "CountryCode": "vn",
+                          "CountryName": "Việt Nam",
+                          "StateName": "Hồ chí minh",
+                          "DistrictName": "Quận 1",
+                          "DistrictCode": null,
+                          "Email": "hauphvn@gmail.com",
+                          "NationalId": null,
+                          "Birthday": "2025-02-18T00:00:00",
+                          "Account": null,
+                          "Password": null,
+                          "StoreId": null,
+                          "Status": "ACTIVE",
+                          "Gender": 0,
+                          "Notes": "Fan cứng 1",
+                          "Image": "/_imageslibrary/customers/21.png"
+                      },
+                      {
+                          "CardTypeId": null,
+                          "CardNumber": null,
+                          "Title": "Anh",
+                          "LastName": "Antony1",
+                          "FirstName": "Long1",
+                          "PhoneNumber": "0967900807",
+                          "Address": "123 Trần hưng đạo ",
+                          "City": "Hồ chí minh",
+                          "StateCode": "hcm",
+                          "CountryCode": "vn",
+                          "CountryName": "Việt Nam",
+                          "StateName": "Hồ chí minh",
+                          "DistrictName": "Quận 1",
+                          "DistrictCode": null,
+                          "Email": "hauphvn7@gmail.com",
+                          "NationalId": null,
+                          "Birthday": "2025-02-18T00:00:00",
+                          "Account": null,
+                          "Password": null,
+                          "StoreId": null,
+                          "Status": "ACTIVE",
+                          "Gender": 0,
+                          "Notes": "Fan cứng ",
+                          "Image": "/_imageslibrary/customers/22.png"
+                      },
+                      {
+                          "CardTypeId": null,
+                          "CardNumber": null,
+                          "Title": "Anh",
+                          "LastName": "Antony2",
+                          "FirstName": "Long2",
+                          "PhoneNumber": "0967900808",
+                          "Address": "123 Trần hưng đạo ",
+                          "City": "Hồ chí minh",
+                          "StateCode": "hcm",
+                          "CountryCode": "vn",
+                          "CountryName": "Việt Nam",
+                          "StateName": "Hồ chí minh",
+                          "DistrictName": "Quận 1",
+                          "DistrictCode": null,
+                          "Email": "hauphvn8@gmail.com",
+                          "NationalId": null,
+                          "Birthday": "2025-02-18T00:00:00",
+                          "Account": null,
+                          "Password": null,
+                          "StoreId": null,
+                          "Status": "ACTIVE",
+                          "Gender": 0,
+                          "Notes": "Fan cứng ",
+                          "Image": "/_imageslibrary/customers/23.png"
+                      },
+                      {
+                          "CardTypeId": null,
+                          "CardNumber": null,
+                          "Title": "Anh",
+                          "LastName": "Antony3",
+                          "FirstName": "Long3",
+                          "PhoneNumber": "0967900809",
+                          "Address": "123 Trần hưng đạo ",
+                          "City": "Hồ chí minh",
+                          "StateCode": "hcm",
+                          "CountryCode": "vn",
+                          "CountryName": "Việt Nam",
+                          "StateName": "Hồ chí minh",
+                          "DistrictName": "Quận 1",
+                          "DistrictCode": null,
+                          "Email": "hauphvn9@gmail.com",
+                          "NationalId": null,
+                          "Birthday": "2025-02-18T00:00:00",
+                          "Account": null,
+                          "Password": null,
+                          "StoreId": null,
+                          "Status": "ACTIVE",
+                          "Gender": 0,
+                          "Notes": "Fan cứng ",
+                          "Image": "/_imageslibrary/customers/24.png"
+                      },
+                      {
+                          "CardTypeId": null,
+                          "CardNumber": null,
+                          "Title": "Anh",
+                          "LastName": "Antony",
+                          "FirstName": "Long10",
+                          "PhoneNumber": "0967900810",
+                          "Address": "123 Trần hưng đạo ",
+                          "City": "Hồ chí minh",
+                          "StateCode": "hcm",
+                          "CountryCode": "vn",
+                          "CountryName": "Việt Nam",
+                          "StateName": "Hồ chí minh",
+                          "DistrictName": "Quận 1",
+                          "DistrictCode": null,
+                          "Email": "hauphvn10@gmail.com",
+                          "NationalId": null,
+                          "Birthday": "2025-02-18T00:00:00",
+                          "Account": null,
+                          "Password": null,
+                          "StoreId": null,
+                          "Status": "ACTIVE",
+                          "Gender": 1,
+                          "Notes": "Fan cứng ",
+                          "Image": "/_imageslibrary/customers/25.png"
+                      },
+                      {
+                          "CardTypeId": null,
+                          "CardNumber": null,
+                          "Title": "Bà",
+                          "LastName": "Test",
+                          "FirstName": "001",
+                          "PhoneNumber": "0984357636",
+                          "Address": "Test results ",
+                          "City": "TP. Hồ Chí Minh",
+                          "StateCode": "71",
+                          "CountryCode": "VN",
+                          "CountryName": "Việt Nam",
+                          "StateName": "TP. Hồ Chí Minh",
+                          "DistrictName": "Q. 1",
+                          "DistrictCode": null,
+                          "Email": "Test",
+                          "NationalId": null,
+                          "Birthday": "2025-04-07T00:00:00",
+                          "Account": null,
+                          "Password": null,
+                          "StoreId": null,
+                          "Status": "ACTIVE",
+                          "Gender": 0,
+                          "Notes": "Test you for tomorrow or Tuesday ",
+                          "Image": ""
+                      },
+                      {
+                          "CardTypeId": null,
+                          "CardNumber": null,
+                          "Title": "Ông",
+                          "LastName": "Test",
+                          "FirstName": "02",
+                          "PhoneNumber": "0984357637",
+                          "Address": "Test you for tomorrow ",
+                          "City": "TP. Hồ Chí Minh",
+                          "StateCode": "71",
+                          "CountryCode": "VN",
+                          "CountryName": "Việt Nam",
+                          "StateName": "TP. Hồ Chí Minh",
+                          "DistrictName": "Q. 1",
+                          "DistrictCode": null,
+                          "Email": "Test002",
+                          "NationalId": null,
+                          "Birthday": "2024-04-07T00:00:00",
+                          "Account": null,
+                          "Password": null,
+                          "StoreId": null,
+                          "Status": "ACTIVE",
+                          "Gender": 1,
+                          "Notes": "Test results and see",
+                          "Image": ""
+                      },
+                      {
+                          "CardTypeId": null,
+                          "CardNumber": null,
+                          "Title": "Anh",
+                          "LastName": "Test",
+                          "FirstName": "04",
+                          "PhoneNumber": "0984357638",
+                          "Address": "123 Trần hưng đạo ",
+                          "City": "Hồ chí minh",
+                          "StateCode": "hcm",
+                          "CountryCode": "vn",
+                          "CountryName": "Việt Nam",
+                          "StateName": "Hồ chí minh",
+                          "DistrictName": "Quận 1",
+                          "DistrictCode": null,
+                          "Email": "test04@gmail.com",
+                          "NationalId": null,
+                          "Birthday": "2025-02-18T00:00:00",
+                          "Account": null,
+                          "Password": null,
+                          "StoreId": null,
+                          "Status": "ACTIVE",
+                          "Gender": 1,
+                          "Notes": "Fan cứng ",
+                          "Image": "/_imageslibrary/customers/28.png"
+                      },
+                      {
+                          "CardTypeId": null,
+                          "CardNumber": null,
+                          "Title": "Anh",
+                          "LastName": "Test ",
+                          "FirstName": "05",
+                          "PhoneNumber": "0984357639",
+                          "Address": "Test results for a week ",
+                          "City": "TP. Hồ Chí Minh",
+                          "StateCode": "71",
+                          "CountryCode": "VN",
+                          "CountryName": "Việt Nam",
+                          "StateName": "TP. Hồ Chí Minh",
+                          "DistrictName": "Q. 1",
+                          "DistrictCode": null,
+                          "Email": "Tét05",
+                          "NationalId": null,
+                          "Birthday": "2025-04-07T00:00:00",
+                          "Account": null,
+                          "Password": null,
+                          "StoreId": null,
+                          "Status": "ACTIVE",
+                          "Gender": 1,
+                          "Notes": "Test results for tomorrow and Tuesday at noon ",
+                          "Image": ""
+                      }
+                  ],
+                  "PageNumber": 1,
+                  "PageSize": 10,
+                  "TotalPages": 2
+              },
+              "statusCodes": 200
+          }

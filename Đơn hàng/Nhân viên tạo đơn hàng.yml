@@ -1,0 +1,233 @@
+info:
+  name: Nhân viên tạo đơn hàng
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{url}}/Order/Employee/Create"
+  headers:
+    - name: x-api-key
+      value: "{{apiKey}}"
+    - name: userIdLogin
+      value: "14"
+  body:
+    type: json
+    data: |-
+      {
+          // THÔNG TIN HẰNG SỐ: 
+          // Lưu ý: chỉ truyền DeviceId khi không có user đăng nhập
+          // "ProductType":  LOP_HOC | SAN_PHAM_KET_HOP | VE_BOI | AN_UONG | PHU_KIEN | DAC_BIET
+           "CustomerId": 2,
+          //"DeviceId": "717e474033f01db2665233235fa7807c", // Tuỳ chọn cho khách hàng tạo đơn trên app khách hàng
+          "PoolCode": "PT",
+          "Email": "hauemail@email.com", // Tuỳ chọn khách vãng lai
+          "Phone": "0967900801", // // Tuỳ chọn khách vãng lai
+          "TotalAmount": 20000,
+          "PaymentMethod": "CHUYEN_KHOAN", // CHUYEN_KHOAN | TIEN_MAT
+          "PaymentStatus": "DA_THANH_TOAN", // CHUA_THANH_TOAN | DA_THANH_TOAN 
+          "OrderStatus": "DA_THANH_TOAN", // CHUA_THANH_TOAN | DA_THANH_TOAN
+          "DiscountAmount": 0,
+          "FinalAmount": 20000,
+          "Note": "Khách hàng yêu cầu",
+          "TableArea": "Bàn số 1000",
+          "OrderDetails": [
+               {
+                  "ProductType": "VE_BOI",
+                  "ProductId": 1,
+                  "Quantity": 1,
+                  "UnitPrice": 20000,
+                  "Note": "Ngày trẻ em"
+              },     
+              //  {
+              //     "ProductType": "SAN_PHAM_KET_HOP",
+              //     "ProductId": 17,// ComboId
+              //     "Quantity": 4,// Số lượng combo 
+              //     "UnitPrice": 300000,
+              //     "Note": "4x4 co dinh, 4x3 tuy chon",
+              //      "OptionalProducts": [
+              //         {
+              //             "ProductId": 1,
+              //              "Quantity": 1,
+              //             "ProductType": "VE_BOI"
+              //         },
+              //         // {
+              //         //     "ProductId": 53,
+              //         //     "Quantity": 1,
+              //         //     "ProductType": "AN_UONG"
+              //         // }
+              //     ]
+              // },       
+              // {
+              //     "ProductType": "LOP_HOC",
+              //     "ProductId": 1, // Là ClassId
+              //     "Quantity": 2,// Số lượng học viên đăng kí học 
+              //     "UnitPrice": 500000,// Giá lớp học
+              //     "ClassPurchaseRequest": [
+              //         {
+              //             "StudentId": 51,// null nếu là học viên là khách hàng mới
+              //             "LastName": "họ",
+              //             "FirstName": "tên viên mới 3.3",
+              //             "PhoneNumber": "3334567891",
+              //             "DateOfBirth": "2015-05-15",
+              //             "Guardian": {
+              //                 "FullName": "Giám hộ học viên 3.3",
+              //                 "PhoneNumber": "33987654321",
+              //                 "Address": "123 Main Street, City, Country"
+              //             }
+              //         },
+              //          {
+              //             //"StudentId": 51,// null nếu là học viên là khách hàng mới
+              //             "LastName": "họ",
+              //             "FirstName": "hoc vien 3.4",
+              //             "PhoneNumber": "3434567891",
+              //             "DateOfBirth": "2019-05-15",
+              //             "Guardian": {
+              //                 "FullName": "Giám hộ học viên 3.4",
+              //                 "PhoneNumber": "34987654321",
+              //                 "Address": "123 Main Street, City, Country"
+              //             }
+              //         }
+              //     ]
+              // }
+              // {
+              //     "ProductType": "VE_BOI", // LOP_HOC | SAN_PHAM_KET_HOP |  VE_BOI | AN_UONG | PHU_KIEN | DAC_BIET
+              //     "ProductId": 10,
+              //     "Quantity": 2,
+              //     "UnitPrice": 35000,
+              //     "Note": "Vé lượt trẻ em"
+              // },
+              //  {
+              //     "ProductType": "VE_BOI", // VE_BOI | AN_UONG | PHU_KIEN | DAC_BIET
+              //     "ProductId": 4,
+              //     "Quantity": 2,
+              //     "UnitPrice": 250000,
+              //     "Note": "Vé tháng trẻ em"
+              // },
+              // {
+              //     "ProductType": "AN_UONG",
+              //     "ProductId": 51,
+              //     "Quantity": 5,
+              //     "UnitPrice": 35000,
+              //     "Note": ""
+              // },
+              //  {
+              //     "ProductType": "AN_UONG",
+              //     "ProductId": 54,
+              //     "Quantity": 3,
+              //     "UnitPrice": 30000,
+              //     "Note": ""
+              // },
+              // {
+              //     "ProductType": "PHU_KIEN",
+              //     "HasRental": true, // Phụ kiện cho thuê: true, không cho thuê: false
+              //     "ProductId": 83,
+              //     "Quantity": 5,
+              //     "UnitPrice": 20000,
+              //     "Note": ""
+              // }
+          ]
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Nhân viên tạo đơn hàng
+    request:
+      url: "{{url}}/Order/Employee/Create"
+      method: POST
+      headers:
+        - name: x-api-key
+          value: "{{apiKey}}"
+      body:
+        type: json
+        data: |-
+          {
+              "CustomerId": 1,
+              "TotalAmount": 640000,
+              "PaymentMethod": "CHUYEN_KHOAN", // CHUYEN_KHOAN | TIEN_MAT
+              "PaymentStatus": "CHUA_THANH_TOAN", // CHUA_THANH_TOAN | DA_THANH_TOAN | THANH_TOAN_MOT_PHAN | HOAN_TIEN | HUY_THANH_TOAN
+              "OrderStatus": "CHO_THANH_TOAN", // CHO_THANH_TOAN | DANG_XU_LY | HOAN_THANH | HUY | CHO_XAC_NHAN | DA_XUAT_VE 
+              "DiscountAmount": 0,
+              "FinalAmount": 640000,
+              "Note": "Khách hàng yêu cầu",
+              "OrderDetails": [
+                  {
+                      "ProductType": "VE_BOI", // VE_BOI | AN_UONG | PHU_KIEN | DAC_BIET
+                      "ProductId": 1,
+                      "Quantity": 2,
+                      "UnitPrice": 300000,
+                      "RentalTypeId": null,
+                      "RentalStartDate": null,
+                      "RentalEndDate": null,
+                      "Note": "Vé người lớn"
+                  },
+                  {
+                      "ProductType": "AN_UONG",
+                      "ProductId": 21,
+                      "Quantity": 2,
+                      "UnitPrice": 20000,
+                      "RentalTypeId": null,
+                      "RentalStartDate": null,
+                      "RentalEndDate": null,
+                      "Note": "Nước cam ép"
+                  }
+                  // {
+                  //     "ProductType": "PHU_KIEN",
+                  //     "ProductId": 5,
+                  //     "ColorId": 1,
+                  //     "AccessoryTypeId": 1,
+                  //     "Quantity": 1,
+                  //     "UnitPrice": 20000,
+                  //     "SubTotal": 20000,
+                  //     "RentalTypeId": 1,
+                  //     "RentalStartDate": "2025-04-10T08:00:00",
+                  //     "RentalEndDate": "2025-04-10T17:00:00",
+                  //     "Note": "Thuê kính bơi"
+                  // }
+              ]
+          }
+    response:
+      statusText: "200"
+      headers:
+        - name: Content-Length
+          value: "542"
+        - name: Content-Type
+          value: application/json; charset=utf-8
+        - name: Date
+          value: Mon, 14 Apr 2025 04:59:04 GMT
+        - name: Server
+          value: Kestrel
+      body:
+        type: json
+        data: |-
+          {
+              "message": "Thành công",
+              "metadata": {
+                  "OrderId": 18,
+                  "OrderCode": "DH20250414115904",
+                  "CustomerId": 1,
+                  "TotalAmount": 640000,
+                  "DiscountAmount": 0,
+                  "FinalAmount": 640000,
+                  "PaymentMethod": "CHUYEN_KHOAN",
+                  "PaymentStatus": "CHUA_THANH_TOAN",
+                  "OrderStatus": "CHO_THANH_TOAN",
+                  "CreatedDate": "2025-04-14T11:59:04.541259+07:00",
+                  "UpdatedDate": null,
+                  "Note": "Khách hàng yêu cầu",
+                  "OrderDetails": {
+                      "TotalTicketAmount": 600000,
+                      "TotalFoodAndDrinkAmount": 40000,
+                      "TotalAccessoryAmount": 0,
+                      "Notes": "Khách hàng yêu cầu",
+                      "DiscountAmount": 0
+                  }
+              },
+              "statusCodes": 200
+          }

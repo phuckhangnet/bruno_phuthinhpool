@@ -1,0 +1,73 @@
+info:
+  name: Khoá /mở khoá tài khoản
+  type: http
+  seq: 8
+
+http:
+  method: POST
+  url: "{{url}}/Customer/Status/Action"
+  headers:
+    - name: x-api-key
+      value: "{{apiKey}}"
+    - name: userIdLogin
+      value: "14"
+  body:
+    type: json
+    data: |-
+      {
+          "CustomerID":2,
+          "Action":"active" // lock | active
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Khoá /mở khoá tài khoản
+    request:
+      url: "{{url}}/Customer/Status/Action"
+      method: POST
+      headers:
+        - name: x-api-key
+          value: "{{apiKey}}"
+      body:
+        type: json
+        data: |-
+          {
+              "CustomerID":32,
+              "Action":"lock" // lock | active
+          }
+    response:
+      statusText: "200"
+      headers:
+        - name: Content-Type
+          value: application/json; charset=utf-8
+        - name: Date
+          value: Tue, 08 Apr 2025 04:09:35 GMT
+        - name: Server
+          value: Microsoft-IIS/10.0
+        - name: Content-Encoding
+          value: gzip
+        - name: Transfer-Encoding
+          value: chunked
+        - name: Vary
+          value: Accept-Encoding
+        - name: X-Powered-By
+          value: ASP.NET
+      body:
+        type: json
+        data: |-
+          {
+              "message": "Success",
+              "metadata": {
+                  "CustomerID": 32,
+                  "Status": "LOCK"
+              },
+              "statusCodes": 200
+          }

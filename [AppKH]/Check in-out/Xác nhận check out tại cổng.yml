@@ -1,0 +1,26 @@
+info:
+  name: Xác nhận check out tại cổng
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{url}}/CheckInOutCustomer/ForCustomer/CheckOut/Confirm/AtTheGate"
+  headers:
+    - name: x-api-key
+      value: "{{apiKey}}"
+  body:
+    type: json
+    data: |-
+      {
+             "PoolQRCode":"CHECKOUTATTHEGATE-PT", // Mã  check out tại quầy hồ bơi (cố định trong db)
+          //  "CustomerId":59, // Tuỳ chọn cho khách hàng đã đăng nhập
+            "DeviceId":"717e474033f01db2665233235fa7807c", // Tuỳ chọn cho khách vãng lai 
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

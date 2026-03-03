@@ -1,0 +1,7 @@
+info:
+  name: Sản phẩm kết hợp
+  type: folder
+  seq: 6
+
+request:
+  auth: inherit

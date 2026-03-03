@@ -1,0 +1,30 @@
+info:
+  name: Tạo mới chi phí
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{url}}/Cost/Create"
+  headers:
+    - name: x-api-key
+      value: "{{apiKey}}"
+    - name: userIdLogin
+      value: "14"
+  body:
+    type: json
+    data: |-
+      {
+          "OccurredDate": "2025-07-16T10:30:00",
+          "OrderCode": "DH8FEE9449AFDC",
+          "CostTypeCode": "TIEN_MAT_BANG",
+          "Amount": 1500000.50,
+          "Note": "Tiền mặt bằng tháng 7"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

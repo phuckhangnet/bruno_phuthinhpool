@@ -1,0 +1,27 @@
+info:
+  name: Lấy thông tin check out tại quầy
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{url}}/CheckInOutCustomer/CheckOut/AtTheBar"
+  headers:
+    - name: x-api-key
+      value: "{{apiKey}}"
+  body:
+    type: json
+    data: |-
+      {
+         // "CardCode":"296", //string | null  Cho trường hợp check out bằng thẻ bơi 
+          "OrderID": 701,// number | null Tuỳ chọn cho trường hợp check out từ chi tiết đơn hàng 
+          "EmployeeId":162,
+          "CardCode":"taoanhpro.com"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

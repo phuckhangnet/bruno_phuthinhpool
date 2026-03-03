@@ -1,0 +1,7 @@
+info:
+  name: Thông báo firebase
+  type: folder
+  seq: 33
+
+request:
+  auth: inherit

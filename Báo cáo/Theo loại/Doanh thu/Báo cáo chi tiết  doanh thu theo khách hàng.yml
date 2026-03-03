@@ -1,0 +1,30 @@
+info:
+  name: Báo cáo chi tiết  doanh thu theo khách hàng
+  type: http
+  seq: 4
+
+http:
+  method: POST
+  url: "{{url}}/Report/Type/Revenue/Detail/Customer"
+  headers:
+    - name: x-api-key
+      value: "{{apiKey}}"
+  body:
+    type: json
+    data: |-
+      {
+          "SearchText":"",
+          "PoolId": 1,
+          "EmployeeId": 14,
+          "FromDate":"2025-04-01",
+          "ToDate":"2025-04-30",
+          "Top": null, // Number || null
+          "Sort": "DESC" // ASC | DESC || null
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

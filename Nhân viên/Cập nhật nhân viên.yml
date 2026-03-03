@@ -1,0 +1,308 @@
+info:
+  name: Cập nhật nhân viên
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{url}}/Employee/UpdateEmployee"
+  headers:
+    - name: x-api-key
+      value: "{{apiKey}}"
+  body:
+    type: multipart-form
+    data:
+      - name: EmployeeID
+        type: text
+        value: "55"
+      - name: FirstName
+        type: text
+        value: Long nv11
+      - name: LastName
+        type: text
+        value: Antony nv11
+      - name: Email
+        type: text
+        value: hauphvn7@gmail.com
+      - name: PhoneNumber
+        type: text
+        value: "0967900812"
+      - name: NationalId
+        type: text
+        value: "0123456789"
+      - name: DateOfBirth
+        type: text
+        value: 2025-02-18
+      - name: Notes
+        type: text
+        value: "Fan cứng "
+      - name: Account
+        type: text
+        value: hauphvn7
+      - name: RoleCode
+        type: text
+        value: phucvu
+      - name: Gender
+        type: text
+        value: "1"
+        description: 0 | 1
+      - name: Certificates
+        type: text
+        value: |-
+          [
+            { 
+              "ID": "44",
+              "CertificateName": "Chứng chỉ bơi 1", 
+              "Notes": "",
+              "ExpiryDate": "2027-02-18",
+              "DeleteId": "44",
+              "UpdateId": "",
+              "AddNewId": ""
+            },
+            { 
+              "ID": "45",
+              "CertificateName": "Chứng chỉ bơi 2 cập nhật", 
+              "Notes": "Cập nhập",
+              "ExpiryDate": "2027-02-18",
+              "DeleteId": "",
+              "UpdateId": "45",
+              "AddNewId": ""
+            },
+            { 
+              "ID": "Id3",
+              "CertificateName": "Chứng chỉ bơi 3", 
+              "Notes": "thêm mới chứng chỉ khi cập nhật",
+              "ExpiryDate": "2027-02-18",
+              "DeleteId": "",
+              "UpdateId": "",
+              "AddNewId": "Id3"
+            }
+          ]
+        description: |
+          Truyền đúng theo định dạng mẫu:
+          {
+              "ID": "",
+              "CertificateName": "", 
+              "Notes": "",
+              "ExpiryDate": "" ,
+              "IsDelete:"",
+              "IsUpdate":"",
+              "IsAddNew":""
+          }
+          Nếu chứng chỉ nào xoá thì truyền item: { "IsDelete:"true"}
+          Nếu file CertificateFiles_Id1 là xoá thì không cần truyền vào form.
+          Nếu là chứng chỉ thêm mới khi cập nhật thì item đó có khoá: { "IsAddNew:"true"}
+          Trường hợp còn lại nếu cập nhật chứng chỉ truyền đầy đủ thông tin của một chứng chỉ: 
+          {
+              "ID": "Id2",
+              "CertificateName": "Chứng chỉ bơi 2 cập nhật", 
+              "Notes": "Cập nhập",
+              "ExpiryDate": "2027-02-18" ,
+          }
+          Nếu file chứng chỉ Id2 có thay đổi thì truyền: CertificateFiles_Id2: File tương ứng, không thay đổi file thì không truyền
+      - name: CertificateFiles_Id2
+        type: file
+        value:
+          - postman-cloud:///1f0106da-0641-4a80-b781-41949ec0979c
+        description: "Id2: là tương ứng với ID trong item 2 trong key: Certificates"
+      - name: ContractType
+        type: text
+        value: chinh_thuc
+        description: chinh_thuc | hop_dong | thu_viec
+      - name: StateName
+        type: text
+        value: Đồng Nai
+        description: |
+          Tên tỉnh
+      - name: CityName
+        type: text
+        value: TP. Biên Hòa
+        description: Tên quận huyện/thành phố(cấp dưới sau khi chọn tỉnh thành)
+      - name: Address
+        type: text
+        value: 15 Nguyễn Bỉnh Khiêm, Long Khánh
+        description: "Địa chỉ chi tiết "
+      - name: CountryName
+        type: text
+        value: Việt Nam
+        description: "Tên quốc gia "
+      - name: CertificateFiles_Id3
+        type: file
+        value:
+          - postman-cloud:///1f0106dd-163b-4e60-a8b3-9831af388f09
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Cập nhật nhân viên
+    request:
+      url: "{{url}}/Employee/UpdateEmployee"
+      method: POST
+      headers:
+        - name: x-api-key
+          value: "{{apiKey}}"
+      body:
+        type: multipart-form
+        data:
+          - name: EmployeeID
+            type: text
+            value: "55"
+          - name: FirstName
+            type: text
+            value: Long nv11
+          - name: LastName
+            type: text
+            value: Antony nv11
+          - name: Email
+            type: text
+            value: hauphvn7@gmail.com
+          - name: PhoneNumber
+            type: text
+            value: "0967900812"
+          - name: NationalId
+            type: text
+            value: "0123456789"
+          - name: DateOfBirth
+            type: text
+            value: 2025-02-18
+          - name: Notes
+            type: text
+            value: "Fan cứng "
+          - name: Account
+            type: text
+            value: hauphvn7
+          - name: RoleCode
+            type: text
+            value: phucvu
+          - name: Gender
+            type: text
+            value: "1"
+            description: 0 | 1
+          - name: Certificates
+            type: text
+            value: |-
+              [
+                { 
+                  "ID": "44",
+                  "CertificateName": "Chứng chỉ bơi 1", 
+                  "Notes": "",
+                  "ExpiryDate": "2027-02-18",
+                  "DeleteId": "44",
+                  "UpdateId": "",
+                  "AddNewId": ""
+                },
+                { 
+                  "ID": "45",
+                  "CertificateName": "Chứng chỉ bơi 2 cập nhật", 
+                  "Notes": "Cập nhập",
+                  "ExpiryDate": "2027-02-18",
+                  "DeleteId": "",
+                  "UpdateId": "45",
+                  "AddNewId": ""
+                },
+                { 
+                  "ID": "Id3",
+                  "CertificateName": "Chứng chỉ bơi 3", 
+                  "Notes": "thêm mới chứng chỉ khi cập nhật",
+                  "ExpiryDate": "2027-02-18",
+                  "DeleteId": "",
+                  "UpdateId": "",
+                  "AddNewId": "Id3"
+                }
+              ]
+            description: |
+              Truyền đúng theo định dạng mẫu:
+              {
+                  "ID": "",
+                  "CertificateName": "", 
+                  "Notes": "",
+                  "ExpiryDate": "" ,
+                  "IsDelete:"",
+                  "IsUpdate":"",
+                  "IsAddNew":""
+              }
+              Nếu chứng chỉ nào xoá thì truyền item: { "IsDelete:"true"}
+              Nếu file CertificateFiles_Id1 là xoá thì không cần truyền vào form.
+              Nếu là chứng chỉ thêm mới khi cập nhật thì item đó có khoá: { "IsAddNew:"true"}
+              Trường hợp còn lại nếu cập nhật chứng chỉ truyền đầy đủ thông tin của một chứng chỉ: 
+              {
+                  "ID": "Id2",
+                  "CertificateName": "Chứng chỉ bơi 2 cập nhật", 
+                  "Notes": "Cập nhập",
+                  "ExpiryDate": "2027-02-18" ,
+              }
+              Nếu file chứng chỉ Id2 có thay đổi thì truyền: CertificateFiles_Id2: File tương ứng, không thay đổi file thì không truyền
+          - name: CertificateFiles_Id2
+            type: file
+            value:
+              - postman-cloud:///1f0106da-0641-4a80-b781-41949ec0979c
+            description: "Id2: là tương ứng với ID trong item 2 trong key: Certificates"
+          - name: ContractType
+            type: text
+            value: chinh_thuc
+            description: chinh_thuc | hop_dong | thu_viec
+          - name: StateName
+            type: text
+            value: Đồng Nai
+            description: |
+              Tên tỉnh
+          - name: CityName
+            type: text
+            value: TP. Biên Hòa
+            description: Tên quận huyện/thành phố(cấp dưới sau khi chọn tỉnh thành)
+          - name: Address
+            type: text
+            value: 15 Nguyễn Bỉnh Khiêm, Long Khánh
+            description: "Địa chỉ chi tiết "
+          - name: CountryName
+            type: text
+            value: Việt Nam
+            description: "Tên quốc gia "
+          - name: CertificateFiles_Id3
+            type: file
+            value:
+              - postman-cloud:///1f0106dd-163b-4e60-a8b3-9831af388f09
+    response:
+      statusText: "200"
+      headers:
+        - name: Content-Length
+          value: "372"
+        - name: Content-Type
+          value: application/json; charset=utf-8
+        - name: Date
+          value: Thu, 03 Apr 2025 10:28:46 GMT
+        - name: Server
+          value: Kestrel
+      body:
+        type: json
+        data: |-
+          {
+              "message": "Thành công",
+              "metadata": {
+                  "EmployeeID": 55,
+                  "Certificates": [
+                      {
+                          "CertificateID": 44,
+                          "CertificateName": "Chứng chỉ bơi 1",
+                          "CertificateFile": "44.pdf",
+                          "IsAddNew": null,
+                          "DeleteStatus": true,
+                          "IsUpload": null
+                      },
+                      {
+                          "CertificateID": 46,
+                          "CertificateName": "Chứng chỉ bơi 3",
+                          "CertificateFile": "46.pdf",
+                          "IsAddNew": true,
+                          "DeleteStatus": null,
+                          "IsUpload": null
+                      }
+                  ]
+              },
+              "statusCodes": 200
+          }

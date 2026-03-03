@@ -1,0 +1,103 @@
+info:
+  name: Xoá sự kiện
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{url}}/Banner/Delete "
+  headers:
+    - name: x-api-key
+      value: "{{apiKey}}"
+    - name: userIdLogin
+      value: "14"
+  body:
+    type: multipart-form
+    data:
+      - name: Id
+        type: text
+        value: "1"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Thêm mới khách hàng
+    request:
+      url: "{{url}}/Customer/AddNew"
+      method: POST
+      headers:
+        - name: x-api-key
+          value: "{{apiKey}}"
+      body:
+        type: multipart-form
+        data:
+          - name: Title
+            type: text
+            value: Anh
+          - name: FirstName
+            type: text
+            value: Long
+          - name: LastName
+            type: text
+            value: Antony
+          - name: Email
+            type: text
+            value: hauphvn@gmail.com
+          - name: PhoneNumber
+            type: text
+            value: "0967900801"
+          - name: Address
+            type: text
+            value: "123 Trần hưng đạo "
+          - name: DateOfBirth
+            type: text
+            value: 2025-02-18
+          - name: CountryCode
+            type: text
+            value: vn
+          - name: CountryName
+            type: text
+            value: Việt Nam
+          - name: CityCode
+            type: text
+            value: hcm
+          - name: CityName
+            type: text
+            value: Hồ chí minh
+          - name: DistrictCode
+            type: text
+            value: q1
+          - name: DistrictName
+            type: text
+            value: Quận 1
+          - name: Note
+            type: text
+            value: "Fan cứng "
+          - name: Image
+            type: file
+            value:
+              - postman-cloud:///1ef9272e-a129-4c70-a357-d62f79b622b1
+    response:
+      statusText: "200"
+      headers:
+        - name: Content-Length
+          value: "71"
+        - name: Content-Type
+          value: application/json; charset=utf-8
+        - name: Date
+          value: Fri, 28 Mar 2025 08:47:23 GMT
+        - name: Server
+          value: Kestrel
+      body:
+        type: json
+        data: |-
+          {
+              "message": "Email đã tồn tại",
+              "metadata": null,
+              "statusCodes": 1030
+          }

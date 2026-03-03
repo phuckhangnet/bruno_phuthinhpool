@@ -1,0 +1,126 @@
+info:
+  name: "[Bán hàng] Lấy danh sách sản phẩm kết hợp"
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{url}}/ProductCombos/Order/GetAll"
+  headers:
+    - name: x-api-key
+      value: pkn
+  body:
+    type: json
+    data: |-
+      {
+         "ComboId": 1
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Kết quả danh sách sản phẩm kết hợp đế bán hàng
+    request:
+      url: "{{url}}/ProductCombos/Order/GetAll"
+      method: POST
+      headers:
+        - name: x-api-key
+          value: pkn
+      body:
+        type: json
+        data: |-
+          {
+             "ComboId": 1
+          }
+    response:
+      statusText: "200"
+      headers:
+        - name: Content-Length
+          value: "1101"
+        - name: Content-Type
+          value: application/json; charset=utf-8
+        - name: Date
+          value: Thu, 19 Jun 2025 04:54:20 GMT
+        - name: Server
+          value: Kestrel
+      body:
+        type: json
+        data: |-
+          {
+              "message": "Thành công",
+              "metadata": [
+                  {
+                      "ComboId": 4,
+                      "ComboName": "Summer Combo 1",
+                      "SalePrice": 1500000,
+                      "MaxAdditionalQuantity": 10,
+                      "FixedProducts": [
+                          {
+                              "ProductId": 1,
+                              "ProductName": "Vé ngày người lớn",
+                              "Quantity": 2,
+                              "ProductType": "VE_BOI",
+                              "ImageUrl": null,
+                              "Price": 80000
+                          },
+                          {
+                              "ProductId": 47,
+                              "ProductName": "Quần bơi nam mới 2025",
+                              "Quantity": 1,
+                              "ProductType": "PHU_KIEN_DO_CHOI",
+                              "ImageUrl": "/_imageslibrary/products/47.jpg",
+                              "Price": 200000
+                          }
+                      ],
+                      "OptionalProducts": [
+                          {
+                              "ProductId": 50,
+                              "ProductName": "Tượng cá vàng",
+                              "Quantity": 2,
+                              "ProductType": "PHU_KIEN_DO_CHOI",
+                              "ImageUrl": "/",
+                              "Price": 60000
+                          },
+                          {
+                              "ProductId": 53,
+                              "ProductName": "Lạp xưởng",
+                              "Quantity": 3,
+                              "ProductType": "AN_UONG",
+                              "ImageUrl": "/",
+                              "Price": 15000
+                          }
+                      ]
+                  },
+                  {
+                      "ComboId": 9,
+                      "ComboName": "est",
+                      "SalePrice": 2000000,
+                      "MaxAdditionalQuantity": 0,
+                      "FixedProducts": [
+                          {
+                              "ProductId": 2,
+                              "ProductName": "Vé ngày trẻ lớn",
+                              "Quantity": 1,
+                              "ProductType": "VE_BOI",
+                              "ImageUrl": null,
+                              "Price": 50000
+                          },
+                          {
+                              "ProductId": 1,
+                              "ProductName": "Vé ngày người lớn",
+                              "Quantity": 1,
+                              "ProductType": "VE_BOI",
+                              "ImageUrl": null,
+                              "Price": 80000
+                          }
+                      ],
+                      "OptionalProducts": []
+                  }
+              ],
+              "statusCodes": 200
+          }

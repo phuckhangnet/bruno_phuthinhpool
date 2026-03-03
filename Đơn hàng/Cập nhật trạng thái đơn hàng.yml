@@ -1,0 +1,66 @@
+info:
+  name: Cập nhật trạng thái đơn hàng
+  type: http
+  seq: 5
+
+http:
+  method: POST
+  url: "{{url}}/Order/Employee/UpdateOrderStatus"
+  headers:
+    - name: x-api-key
+      value: "{{apiKey}}"
+  body:
+    type: json
+    data: |-
+      {
+          "OrderId": 383,
+          "OrderStatus":"HUY_DON", // CHUA_THANH_TOAN | DA_THANH_TOAN  | HUY_DON,
+          "EmployeeId":14,
+          "Note":"Khach yeu cau"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Cập nhật thanh toán đơn hàng
+    request:
+      url: "{{url}}/Order/Employee/UpdateStatusPayment"
+      method: POST
+      headers:
+        - name: x-api-key
+          value: "{{apiKey}}"
+      body:
+        type: json
+        data: |-
+          {
+              "OrderId": 32,
+              "PaymentStatus":"HUY_THANH_TOAN" // CHO_THANH_TOAN | CHUA_THANH_TOAN | DA_THANH_TOAN | HOAN_TIEN | HUY_THANH_TOAN
+          }
+    response:
+      statusText: "200"
+      headers:
+        - name: Content-Length
+          value: "134"
+        - name: Content-Type
+          value: application/json; charset=utf-8
+        - name: Date
+          value: Tue, 15 Apr 2025 02:10:13 GMT
+        - name: Server
+          value: Kestrel
+      body:
+        type: json
+        data: |-
+          {
+              "message": "Thành công",
+              "metadata": {
+                  "OrderId": 32,
+                  "OrderCode": "DH20250414225013",
+                  "PaymentStatus": "HUY_THANH_TOAN"
+              },
+              "statusCodes": 200
+          }

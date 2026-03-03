@@ -1,0 +1,139 @@
+info:
+  name: "[KHO HÀNG] Lấy danh sách sản phẩm khác"
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{url}}/Product/Warehouse/GetAll"
+  headers:
+    - name: x-api-key
+      value: "{{apiKey}}"
+  body:
+    type: json
+    data: |-
+      {
+          "SearchText": "",
+          "PageNumber": 1,
+          "PageSize": 30,
+          "ProductType":"AN_UONG",
+          "InventoryQuantity": null,
+          "PriceFrom":10000,
+          "PriceTo":20000
+          
+          
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Lấy danh sách sản phẩm ăn uống
+    request:
+      url: "{{url}}/Product/FoodAndDrink/GetAll"
+      method: POST
+      headers:
+        - name: x-api-key
+          value: "{{apiKey}}"
+      body:
+        type: json
+        data: |-
+          {
+              "SearchText": "",
+              "PageNumber": 1,
+              "PageSize": 10
+          }
+    response:
+      statusText: "200"
+      headers:
+        - name: Content-Length
+          value: "1500"
+        - name: Content-Type
+          value: application/json; charset=utf-8
+        - name: Date
+          value: Mon, 14 Apr 2025 04:45:46 GMT
+        - name: Server
+          value: Kestrel
+      body:
+        type: json
+        data: |-
+          {
+              "message": "Thành công",
+              "metadata": {
+                  "TotalCount": 4,
+                  "Items": [
+                      {
+                          "Id": 19,
+                          "ProductCode": "DA001",
+                          "ProductName": "Nước ngọt Coca Cola",
+                          "ProductCategoryId": 2,
+                          "Description": "Nước ngọt có gas, dung tích 330ml",
+                          "Quantity": 42,
+                          "Price": 15000,
+                          "ImageUrls": [
+                              "_imageslibrary/products/foodanddrinks/1_1.jpeg"
+                          ],
+                          "IsRentable": false,
+                          "Status": true,
+                          "CreatedDate": "2025-04-14T11:45:46.607312+07:00",
+                          "UpdatedDate": null
+                      },
+                      {
+                          "Id": 20,
+                          "ProductCode": "DA002",
+                          "ProductName": "Trà sữa trân châu",
+                          "ProductCategoryId": 2,
+                          "Description": "Trà sữa thơm ngon với trân châu dai giòn",
+                          "Quantity": 23,
+                          "Price": 25000,
+                          "ImageUrls": [
+                              "_imageslibrary/products/foodanddrinks/2_1.jpeg"
+                          ],
+                          "IsRentable": false,
+                          "Status": true,
+                          "CreatedDate": "2025-04-14T11:45:46.607655+07:00",
+                          "UpdatedDate": null
+                      },
+                      {
+                          "Id": 21,
+                          "ProductCode": "DA003",
+                          "ProductName": "Bánh mì pate",
+                          "ProductCategoryId": 2,
+                          "Description": "Bánh mì kẹp pate và rau củ tươi",
+                          "Quantity": 13,
+                          "Price": 20000,
+                          "ImageUrls": [
+                              "_imageslibrary/products/foodanddrinks/3_1.jpeg"
+                          ],
+                          "IsRentable": false,
+                          "Status": true,
+                          "CreatedDate": "2025-04-14T11:45:46.607657+07:00",
+                          "UpdatedDate": null
+                      },
+                      {
+                          "Id": 22,
+                          "ProductCode": "DA004",
+                          "ProductName": "Nước cam ép",
+                          "ProductCategoryId": 2,
+                          "Description": "Nước cam tươi nguyên chất 100%",
+                          "Quantity": 37,
+                          "Price": 30000,
+                          "ImageUrls": [
+                              "_imageslibrary/products/foodanddrinks/4_1.jpeg"
+                          ],
+                          "IsRentable": false,
+                          "Status": true,
+                          "CreatedDate": "2025-04-14T11:45:46.607658+07:00",
+                          "UpdatedDate": null
+                      }
+                  ],
+                  "PageNumber": 1,
+                  "PageSize": 10,
+                  "TotalPages": 1
+              },
+              "statusCodes": 200
+          }

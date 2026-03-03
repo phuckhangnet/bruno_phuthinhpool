@@ -1,0 +1,30 @@
+info:
+  name: Báo cáo chi tiết  doanh thu loại đơn hàng theo ca
+  type: http
+  seq: 5
+
+http:
+  method: POST
+  url: "{{url}}/Report/Type/WorkShift/Revenue/Detail/OrderType"
+  headers:
+    - name: x-api-key
+      value: "{{apiKey}}"
+  body:
+    type: json
+    data: |-
+      {
+          "SearchText":"",
+          "PoolId": 1,
+          "EmployeeId": 14,
+          "FromDate":"2025-07-01",
+          "ToDate":"2025-08-30",
+          "Top": null, // Number || null
+          "Sort": "DESC" // ASC | DESC || null
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

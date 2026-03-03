@@ -1,0 +1,65 @@
+info:
+  name: Lấy số lượng đơn hàng, số lượng thẻ bơi, vé, thức ăn, phụ kiện
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{url}}/SwimmingCard/Customer/GetTotalCardAndOrder"
+  headers:
+    - name: x-api-key
+      value: "{{apiKey}}"
+  body:
+    type: json
+    data: |-
+      {
+         // "CustomerId": 59,
+          "DeviceId":"112233" // Tuỳ chọn cho khách vãng lai
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Lấy số lượng đơn hàng, số lượng thẻ bơi
+    request:
+      url: "{{url}}/SwimmingCard/Customer/GetTotalCardAndOrder"
+      method: POST
+      headers:
+        - name: x-api-key
+          value: "{{apiKey}}"
+      body:
+        type: json
+        data: |-
+          {
+              "CustomerId": 59
+          }
+    response:
+      statusText: "200"
+      headers:
+        - name: Content-Length
+          value: "159"
+        - name: Content-Type
+          value: application/json; charset=utf-8
+        - name: Date
+          value: Tue, 22 Apr 2025 13:55:11 GMT
+        - name: Server
+          value: Kestrel
+      body:
+        type: json
+        data: |-
+          {
+              "message": "Thành công",
+              "metadata": {
+                  "TotalTicket": 4,
+                  "TotalFoodAndDrink": 4,
+                  "TotalAccessory": 2,
+                  "TotalOrderQuantity": 2,
+                  "TotalSwimmingCard": 2
+              },
+              "statusCodes": 200
+          }

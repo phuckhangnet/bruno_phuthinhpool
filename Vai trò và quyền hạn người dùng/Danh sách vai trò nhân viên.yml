@@ -1,0 +1,135 @@
+info:
+  name: Danh sách vai trò nhân viên
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{url}}/Permission/EmloyeeRole/GetAll"
+  headers:
+    - name: x-api-key
+      value: "{{apiKey}}"
+    - name: userIdLogin
+      value: "14"
+  body:
+    type: json
+    data: "{}"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Danh sách vai trò nhân viên
+    request:
+      url: "{{url}}/Permission/EmloyeeRole/GetAll"
+      method: POST
+      headers:
+        - name: x-api-key
+          value: "{{apiKey}}"
+      body:
+        type: json
+        data: "{}"
+    response:
+      statusText: "200"
+      headers:
+        - name: Content-Type
+          value: application/json; charset=utf-8
+        - name: Date
+          value: Wed, 09 Apr 2025 02:04:59 GMT
+        - name: Server
+          value: Microsoft-IIS/10.0
+        - name: Content-Encoding
+          value: gzip
+        - name: Transfer-Encoding
+          value: chunked
+        - name: Vary
+          value: Accept-Encoding
+        - name: X-Powered-By
+          value: ASP.NET
+      body:
+        type: json
+        data: |-
+          {
+              "message": "Success",
+              "metadata": {
+                  "roles": [
+                      {
+                          "ID": 1,
+                          "Name": "Admin",
+                          "NameCode": "admin",
+                          "Note": "Admin"
+                      },
+                      {
+                          "ID": 2,
+                          "Name": "Quản lí chi nhánh",
+                          "NameCode": "quanlychinhanh",
+                          "Note": "Người quản lý chi nhánh"
+                      },
+                      {
+                          "ID": 3,
+                          "Name": "Trưởng ca",
+                          "NameCode": "truongca",
+                          "Note": "Người đứng đầu ca làm việc"
+                      },
+                      {
+                          "ID": 4,
+                          "Name": "Thu ngân",
+                          "NameCode": "thungan",
+                          "Note": "Người thực hiện thanh toán"
+                      },
+                      {
+                          "ID": 5,
+                          "Name": "Phục vụ",
+                          "NameCode": "phucvu",
+                          "Note": "Người phục vụ khách hàng"
+                      },
+                      {
+                          "ID": 6,
+                          "Name": "Tạp vụ",
+                          "NameCode": "tapvu",
+                          "Note": "Tạp vụ"
+                      },
+                      {
+                          "ID": 7,
+                          "Name": "Bếp trưởng",
+                          "NameCode": "beptruong",
+                          "Note": "Người đứng đầu bếp"
+                      },
+                      {
+                          "ID": 8,
+                          "Name": "Phụ bếp",
+                          "NameCode": "phubep",
+                          "Note": "Người hỗ trợ bếp trưởng"
+                      },
+                      {
+                          "ID": 9,
+                          "Name": "Bảo vệ",
+                          "NameCode": "baove",
+                          "Note": "Người bảo vệ an ninh"
+                      },
+                      {
+                          "ID": 10,
+                          "Name": "Nhân viên khởi tạo",
+                          "NameCode": "nhanvienmoi",
+                          "Note": "Nhân viên vừa tạo tài khoản chưa rõ vai trò"
+                      },
+                      {
+                          "ID": 11,
+                          "Name": "Huấn luyện viên",
+                          "NameCode": "huanluanvien",
+                          "Note": "Huấn luyện viên dạy bơi"
+                      },
+                      {
+                          "ID": 12,
+                          "Name": "Học viên",
+                          "NameCode": "hocvien",
+                          "Note": "Học viên học bơi"
+                      }
+                  ]
+              },
+              "statusCodes": 200
+          }

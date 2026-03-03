@@ -1,0 +1,106 @@
+info:
+  name: Báo cáo chi tiết  doanh thu theo ngày
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{url}}/Report/Type/WorkShift/Revenue/Detail/Date"
+  headers:
+    - name: x-api-key
+      value: "{{apiKey}}"
+  body:
+    type: json
+    data: |-
+      {
+          "EmployeeId": 14,
+          "FromDate":"2025-07-01",
+          "ToDate":"2025-08-04",
+          "PoolId": 1
+
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Báo cáo tổng quan doanh  chi tiết theo ngày
+    request:
+      url: "{{url}}/Report/Type/Revenue/Detail/Date"
+      method: POST
+      headers:
+        - name: x-api-key
+          value: "{{apiKey}}"
+      body:
+        type: json
+        data: |-
+          {
+              "PoolId": 1,
+              "EmployeeId": 14,
+              "FromDate":"2025-04-01",
+              "ToDate":"2025-04-05"
+          }
+    response:
+      statusText: "200"
+      headers:
+        - name: Content-Length
+          value: "712"
+        - name: Content-Type
+          value: application/json; charset=utf-8
+        - name: Date
+          value: Fri, 25 Apr 2025 02:24:00 GMT
+        - name: Server
+          value: Kestrel
+      body:
+        type: json
+        data: |-
+          {
+              "message": "Thành công",
+              "metadata": [
+                  {
+                      "Day": "2025-04-01T00:00:00",
+                      "TotalCustomers": 0,
+                      "NumberOfBranches": 1,
+                      "TotalOrders": 0,
+                      "TotalProducts": 0,
+                      "TotalRevenueOfTheDay": 0
+                  },
+                  {
+                      "Day": "2025-04-02T00:00:00",
+                      "TotalCustomers": 0,
+                      "NumberOfBranches": 1,
+                      "TotalOrders": 0,
+                      "TotalProducts": 0,
+                      "TotalRevenueOfTheDay": 0
+                  },
+                  {
+                      "Day": "2025-04-03T00:00:00",
+                      "TotalCustomers": 0,
+                      "NumberOfBranches": 1,
+                      "TotalOrders": 0,
+                      "TotalProducts": 0,
+                      "TotalRevenueOfTheDay": 0
+                  },
+                  {
+                      "Day": "2025-04-04T00:00:00",
+                      "TotalCustomers": 0,
+                      "NumberOfBranches": 1,
+                      "TotalOrders": 0,
+                      "TotalProducts": 0,
+                      "TotalRevenueOfTheDay": 0
+                  },
+                  {
+                      "Day": "2025-04-05T00:00:00",
+                      "TotalCustomers": 0,
+                      "NumberOfBranches": 1,
+                      "TotalOrders": 0,
+                      "TotalProducts": 0,
+                      "TotalRevenueOfTheDay": 0
+                  }
+              ],
+              "statusCodes": 200
+          }

@@ -1,0 +1,25 @@
+info:
+  name: Lấy số lượng thông báo chưa đọc
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{url}}/NotificationBadge/GetTotalMessages"
+  headers:
+    - name: x-api-key
+      value: "{{apiKey}}"
+    - name: userIdLogin
+      value: "14"
+  body:
+    type: json
+    data: ""
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

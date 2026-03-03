@@ -1,0 +1,7 @@
+info:
+  name: Đơn hàng
+  type: folder
+  seq: 17
+
+request:
+  auth: inherit

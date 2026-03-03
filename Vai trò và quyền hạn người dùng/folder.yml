@@ -1,0 +1,7 @@
+info:
+  name: Vai trò và quyền hạn người dùng
+  type: folder
+  seq: 8
+
+request:
+  auth: inherit

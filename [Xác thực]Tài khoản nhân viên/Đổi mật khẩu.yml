@@ -1,0 +1,105 @@
+info:
+  name: Đổi mật khẩu
+  type: http
+  seq: 5
+
+http:
+  method: POST
+  url: "{{url}}/Auth/Employee/ChangePassword"
+  headers:
+    - name: x-api-key
+      value: "{{apiKey}}"
+    - name: from
+      value: web
+      disabled: true
+  body:
+    type: json
+    data: |-
+      {
+         "Account":"hauphvn",
+         "OldPassword":"252981",
+         "NewPassword":"123456"
+      }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Kết quả
+    request:
+      url: "{{url}}/Auth/Employee/ChangePassword"
+      method: POST
+      headers:
+        - name: x-api-key
+          value: "{{apiKey}}"
+        - name: from
+          value: web
+          disabled: true
+      body:
+        type: json
+        data: |-
+          {
+             "Account":"hauphvn",
+             "OldPassword":"12345",
+             "NewPassword":"123456"
+          }
+    response:
+      statusText: "200"
+      headers:
+        - name: Content-Length
+          value: "69"
+        - name: Content-Type
+          value: application/json; charset=utf-8
+        - name: Date
+          value: Wed, 26 Mar 2025 10:11:42 GMT
+        - name: Server
+          value: Kestrel
+      body:
+        type: json
+        data: |-
+          {
+              "message": "Thành công",
+              "metadata": {
+                  "UserID": 14
+              },
+              "statusCodes": 200
+          }
+  - name: Đổi mật khẩu
+    request:
+      url: "{{url}}/Auth/Employee/ChangePassword"
+      method: POST
+      headers:
+        - name: x-api-key
+          value: "{{apiKey}}"
+        - name: from
+          value: web
+          disabled: true
+      body:
+        type: json
+        data: |-
+          {
+             "Account":"hauphvsssn",
+             "OldPassword":"252981",
+             "NewPassword":"123456"
+          }
+    response:
+      statusText: "401"
+      headers:
+        - name: Transfer-Encoding
+          value: chunked
+        - name: Server
+          value: Microsoft-IIS/10.0
+        - name: WWW-Authenticate
+          value: Bearer
+        - name: X-Powered-By
+          value: ASP.NET
+        - name: X-Powered-By-Plesk
+          value: PleskWin
+        - name: Date
+          value: Fri, 04 Apr 2025 10:52:17 GMT
+      body:
+        type: text
+        data: ""

@@ -1,0 +1,82 @@
+info:
+  name: Lấy thông tin sản phẩm đã mua theo khách hàng
+  type: http
+  seq: 7
+
+http:
+  method: POST
+  url: "{{url}}/Customer/Products/GetInfoProductSold"
+  headers:
+    - name: x-api-key
+      value: "{{apiKey}}"
+  body:
+    type: json
+    data: |-
+      {
+          "CustomerID": 1
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Lấy chi tiết khách hàng
+    request:
+      url: "{{url}}/Customer/GetDetailById"
+      method: POST
+      headers:
+        - name: x-api-key
+          value: "{{apiKey}}"
+      body:
+        type: json
+        data: |-
+          {
+              "CustomerID": 21
+          }
+    response:
+      statusText: "200"
+      headers:
+        - name: Content-Length
+          value: "573"
+        - name: Content-Type
+          value: application/json; charset=utf-8
+        - name: Date
+          value: Sat, 29 Mar 2025 04:27:25 GMT
+        - name: Server
+          value: Kestrel
+      body:
+        type: json
+        data: |-
+          {
+              "message": "Success",
+              "metadata": {
+                  "CardTypeId": null,
+                  "CardNumber": null,
+                  "Title": "Anh",
+                  "LastName": "Antony",
+                  "FirstName": "Long",
+                  "PhoneNumber": "0967900801",
+                  "Address": "123 Trần hưng đạo ",
+                  "City": "Hồ chí minh",
+                  "StateCode": "hcm",
+                  "CountryCode": "vn",
+                  "CountryName": "Việt Nam",
+                  "StateName": "Hồ chí minh",
+                  "DistrictName": "Quận 1",
+                  "Email": "hauphvn@gmail.com",
+                  "NationalId": null,
+                  "Birthday": "2025-02-18T00:00:00",
+                  "Account": null,
+                  "Password": null,
+                  "StoreId": null,
+                  "Status": "ACTIVE",
+                  "Gender": "Other",
+                  "Notes": "Fan cứng ",
+                  "Image": "/_imageslibrary/customers/21.png"
+              },
+              "statusCodes": 200
+          }

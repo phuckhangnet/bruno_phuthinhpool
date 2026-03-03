@@ -1,0 +1,7 @@
+info:
+  name: Bán lớp học
+  type: folder
+  seq: 16
+
+request:
+  auth: inherit

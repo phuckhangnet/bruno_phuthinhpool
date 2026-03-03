@@ -1,0 +1,143 @@
+info:
+  name: Lịch sử check-in, check-out
+  type: http
+  seq: 5
+
+http:
+  method: POST
+  url: "{{url}}/Check/LichSuCheckInCheckOut"
+  headers:
+    - name: x-api-key
+      value: "{{apiKey}}"
+  body:
+    type: json
+    data: |-
+      {
+          "idnguoidung": 113,
+          "nam": "2025",
+          "thang": "04"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Lịch sử check-in, check-out
+    request:
+      url: "{{url}}/Check/LichSuCheckInCheckOut"
+      method: POST
+      headers:
+        - name: x-api-key
+          value: "{{apiKey}}"
+      body:
+        type: json
+        data: |-
+          {
+              "idnguoidung": 14,
+              "nam": "2025",
+              "thang": "04"
+          }
+    response:
+      statusText: "200"
+      headers:
+        - name: Content-Length
+          value: "974"
+        - name: Content-Type
+          value: application/json; charset=utf-8
+        - name: Date
+          value: Fri, 18 Apr 2025 17:04:29 GMT
+        - name: Server
+          value: Kestrel
+      body:
+        type: json
+        data: |-
+          {
+              "success": "01",
+              "data": {
+                  "HoTenNhanVien": "Pham van Hau11:05",
+                  "NgaySinh": "2025-04-12",
+                  "ChucVu": "Admin",
+                  "BangChamCong": [
+                      {
+                          "Ngay": "2025-04-01",
+                          "ChamCongTrongNgay": []
+                      },
+                      {
+                          "Ngay": "2025-04-02",
+                          "ChamCongTrongNgay": []
+                      },
+                      {
+                          "Ngay": "2025-04-03",
+                          "ChamCongTrongNgay": []
+                      },
+                      {
+                          "Ngay": "2025-04-04",
+                          "ChamCongTrongNgay": []
+                      },
+                      {
+                          "Ngay": "2025-04-05",
+                          "ChamCongTrongNgay": []
+                      },
+                      {
+                          "Ngay": "2025-04-06",
+                          "ChamCongTrongNgay": []
+                      },
+                      {
+                          "Ngay": "2025-04-07",
+                          "ChamCongTrongNgay": []
+                      },
+                      {
+                          "Ngay": "2025-04-08",
+                          "ChamCongTrongNgay": []
+                      },
+                      {
+                          "Ngay": "2025-04-09",
+                          "ChamCongTrongNgay": []
+                      },
+                      {
+                          "Ngay": "2025-04-10",
+                          "ChamCongTrongNgay": []
+                      },
+                      {
+                          "Ngay": "2025-04-11",
+                          "ChamCongTrongNgay": []
+                      },
+                      {
+                          "Ngay": "2025-04-12",
+                          "ChamCongTrongNgay": []
+                      },
+                      {
+                          "Ngay": "2025-04-13",
+                          "ChamCongTrongNgay": []
+                      },
+                      {
+                          "Ngay": "2025-04-14",
+                          "ChamCongTrongNgay": []
+                      },
+                      {
+                          "Ngay": "2025-04-15",
+                          "ChamCongTrongNgay": []
+                      },
+                      {
+                          "Ngay": "2025-04-16",
+                          "ChamCongTrongNgay": []
+                      },
+                      {
+                          "Ngay": "2025-04-17",
+                          "ChamCongTrongNgay": []
+                      },
+                      {
+                          "Ngay": "2025-04-18",
+                          "ChamCongTrongNgay": []
+                      },
+                      {
+                          "Ngay": "2025-04-19",
+                          "ChamCongTrongNgay": []
+                      }
+                  ]
+              }
+          }

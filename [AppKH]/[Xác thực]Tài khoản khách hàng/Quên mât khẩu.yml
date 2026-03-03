@@ -1,0 +1,26 @@
+info:
+  name: Quên mât khẩu
+  type: http
+  seq: 4
+
+http:
+  method: POST
+  url: "{{url}}/Auth/Customer/ForgotPassword"
+  headers:
+    - name: x-api-key
+      value: "{{apiKey}}"
+    - name: from
+      value: web
+      disabled: true
+  body:
+    type: json
+    data: |-
+      {
+         "Account":"hauphvnkh"
+      }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

@@ -1,0 +1,7 @@
+info:
+  name: Ca làm việc/Phân ca
+  type: folder
+  seq: 11
+
+request:
+  auth: inherit

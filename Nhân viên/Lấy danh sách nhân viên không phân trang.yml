@@ -1,0 +1,26 @@
+info:
+  name: Lấy danh sách nhân viên không phân trang
+  type: http
+  seq: 4
+
+http:
+  method: POST
+  url: "{{url}}/Employee/Web/GetListEmployee"
+  headers:
+    - name: x-api-key
+      value: "{{apiKey}}"
+  body:
+    type: json
+    data: |-
+      {
+          "SearchText": "",
+          "PageNumber": 1,
+          "PageSize": 10
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

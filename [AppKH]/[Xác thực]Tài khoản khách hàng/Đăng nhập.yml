@@ -1,0 +1,95 @@
+info:
+  name: Đăng nhập
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{url}}/Auth/Customer/LoginWithAccount"
+  headers:
+    - name: x-api-key
+      value: "{{apiKey}}"
+    - name: from
+      value: web
+      disabled: true
+  body:
+    type: json
+    data: |2
+       {
+          "account":"hauphvnkh",
+          "password":"123456",
+          "TokenNofitication":"postman"
+       }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Đăng nhập
+    request:
+      url: "{{url}}/Auth/Customer/LoginWithAccount"
+      method: POST
+      headers:
+        - name: x-api-key
+          value: "{{apiKey}}"
+        - name: from
+          value: web
+          disabled: true
+      body:
+        type: json
+        data: |2
+           {
+              "Account":"hauphvnkh",
+              "Password":"123456"
+           }
+    response:
+      statusText: "200"
+      headers:
+        - name: Content-Length
+          value: "570"
+        - name: Content-Type
+          value: application/json; charset=utf-8
+        - name: Date
+          value: Mon, 21 Apr 2025 10:55:30 GMT
+        - name: Server
+          value: Kestrel
+      body:
+        type: json
+        data: |-
+          {
+              "message": "Login success",
+              "metadata": {
+                  "CustomerId": 58,
+                  "FullName": "JohnDoe",
+                  "Gender": 0,
+                  "DateOfBirth": "0001-01-01T00:00:00",
+                  "PhoneNumber": null,
+                  "Email": "coderzeroonezero@gmail.com",
+                  "National": null,
+                  "City": null,
+                  "Address": null,
+                  "Note": null,
+                  "Status": null,
+                  "Token": "{{vault:json-web-token}}"
+              },
+              "statusCodes": 200
+          }
+
+docs: |-
+  **Input: Chưa mã hoá**
+
+  ``` json
+  {    
+  "TokenNofitication": "xxx",    
+  "Device": "ios",    
+  "Account": "xxx",
+  "Password": "xxx"
+  }
+
+   ```

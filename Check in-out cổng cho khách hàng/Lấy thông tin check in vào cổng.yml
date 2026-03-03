@@ -1,0 +1,100 @@
+info:
+  name: Lấy thông tin check in vào cổng
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{url}}/CheckInOutCustomer/PreviewCheckIn"
+  headers:
+    - name: x-api-key
+      value: "{{apiKey}}"
+  body:
+    type: json
+    data: |-
+      {
+      {"CardCode": "Phúc Khang Net", "EmployeeId": 162,
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Thông tin check in
+    request:
+      url: "{{url}}/CheckInOutCustomer/PreviewCheckIn"
+      method: POST
+      headers:
+        - name: x-api-key
+          value: "{{apiKey}}"
+      body:
+        type: json
+        data: |-
+          {
+              "CardCode":"112233",
+              "EmployeeId":14
+          }
+    response:
+      statusText: "200"
+      headers:
+        - name: Content-Length
+          value: "808"
+        - name: Content-Type
+          value: application/json; charset=utf-8
+        - name: Date
+          value: Sun, 20 Apr 2025 17:29:47 GMT
+        - name: Server
+          value: Kestrel
+      body:
+        type: json
+        data: |-
+          {
+              "message": "Thành công",
+              "metadata": {
+                  "CustomerId": 1,
+                  "FullName": "Khách Vãng Lai",
+                  "TotalMoneyOfCard": 700000,
+                  "TicketInfos": [
+                      {
+                          "TicketId": 60,
+                          "TicketCode": "ngay_nguoi_lon",
+                          "TicketPackageName": "Gói ngày người lớn",
+                          "TicketPackageCode": "ngay_nguoi_lon",
+                          "TicketPrice": 80000,
+                          "TicketQuantity": 2
+                      },
+                      {
+                          "TicketId": 61,
+                          "TicketCode": "thang_tre_em",
+                          "TicketPackageName": "Gói tháng trẻ em",
+                          "TicketPackageCode": "thang_tre_em",
+                          "TicketPrice": 250000,
+                          "TicketQuantity": 2
+                      }
+                  ],
+                  "AccessoryInfos": [
+                      {
+                          "AccessoryId": 5,
+                          "AccessoryName": "Kính bơi cao cấp Speedo",
+                          "AccessoryPrice": 60000,
+                          "ForRent": true,
+                          "AccessoryQuantity": 1,
+                          "AccessoryGroup": ""
+                      }
+                  ],
+                  "FoodAndDrinkInfos": [
+                      {
+                          "FoodAndDrinkId": 21,
+                          "FoodAndDrinkName": "Bánh mì pate",
+                          "FoodAndDrinkPrice": 20000,
+                          "FoodAndDrinkQuantity": 2,
+                          "FoodAndDrinkGroup": ""
+                      }
+                  ]
+              },
+              "statusCodes": 200
+          }

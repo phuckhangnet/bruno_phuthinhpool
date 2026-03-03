@@ -1,0 +1,8 @@
+name: HoBoiTest
+variables:
+  - name: token
+    value: ""
+  - name: url
+    value: https://phuthinhdev.ngoanthachviet.com/api
+  - name: apiKey
+    value: pkn

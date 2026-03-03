@@ -1,0 +1,29 @@
+info:
+  name: Báo cáo so sánh
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{url}}/Report/Comparison"
+  headers:
+    - name: x-api-key
+      value: "{{apiKey}}"
+  body:
+    type: json
+    data: |-
+      {
+          "nguon": "NT2025", //NT: nam-thang, vd: nguon:'NT2023' dich: 'NT2024'
+          //NQ: quý năm vd: nguon:'NQ2023', dich: 'NQ2024'
+          //QT: quý tháng, vd: nguon: 'QT202301', dich: 'QT202402'  // Q1/2023 vs Q2/2024
+          "dich": "NT2024",
+          "loaiSoLieu": "KH", // Chi cho phep: 'DT,DH,KH,SP'
+          "idsCuaHang": "1"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

@@ -1,0 +1,7 @@
+info:
+  name: Nghỉ phép
+  type: folder
+  seq: 30
+
+request:
+  auth: inherit

@@ -1,0 +1,128 @@
+info:
+  name: Lấy thông tin tất cả đơn mua theo vé
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{url}}/Order/Customer/GetMyOrder/Tickets"
+  headers:
+    - name: x-api-key
+      value: "{{apiKey}}"
+  body:
+    type: json
+    data: |-
+      {
+          // "CustomerId":59,
+          "DeviceId":"717e474033f01db2665233235fa7807c",
+          "SearchText":"",
+          "PageNumber":1,
+          "PageSize":10
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Lấy thông tin tất cả đơn mua theo vé
+    request:
+      url: "{{url}}/Order/Customer/GetMyOrder/Tickets"
+      method: POST
+      headers:
+        - name: x-api-key
+          value: "{{apiKey}}"
+      body:
+        type: json
+        data: |-
+          {
+              "CustomerId":2,
+              // "DeviceId":"717e474033f01db2665233235fa7807c",
+              "SearchText":"",
+              "PageNumber":1,
+              "PageSize":10
+          }
+    response:
+      statusText: "200"
+      headers:
+        - name: Content-Length
+          value: "1134"
+        - name: Content-Type
+          value: application/json; charset=utf-8
+        - name: Date
+          value: Fri, 27 Jun 2025 02:45:29 GMT
+        - name: Server
+          value: Kestrel
+      body:
+        type: json
+        data: |-
+          {
+              "message": "Thành công",
+              "metadata": {
+                  "TotalCount": 3,
+                  "Items": [
+                      {
+                          "OrderDate": "2025-06-27T09:22:36.26",
+                          "TicketCodes": [
+                              {
+                                  "TicketCode": "1234-651-1",
+                                  "QuantityTicketRemaining": 1,
+                                  "QuantityTicket": 1
+                              }
+                          ],
+                          "QuantityTicket": 1,
+                          "TicketPackageName": "Vé ngày trẻ em",
+                          "TicketPackageCode": "luot_tre_em",
+                          "UnitPriceTicket": 20000,
+                          "TotalPriceTicket": 20000
+                      },
+                      {
+                          "OrderDate": "2025-06-27T09:22:36.27",
+                          "TicketCodes": [
+                              {
+                                  "TicketCode": "1235-651-3",
+                                  "QuantityTicketRemaining": 7,
+                                  "QuantityTicket": 7
+                              },
+                              {
+                                  "TicketCode": "1236-651-3",
+                                  "QuantityTicketRemaining": 7,
+                                  "QuantityTicket": 7
+                              }
+                          ],
+                          "QuantityTicket": 2,
+                          "TicketPackageName": "Vé tuần trẻ em",
+                          "TicketPackageCode": "tuan_tre_em",
+                          "UnitPriceTicket": 120000,
+                          "TotalPriceTicket": 240000
+                      },
+                      {
+                          "OrderDate": "2025-06-27T09:22:36.28",
+                          "TicketCodes": [
+                              {
+                                  "TicketCode": "1237-651-8",
+                                  "QuantityTicketRemaining": 30,
+                                  "QuantityTicket": 30
+                              },
+                              {
+                                  "TicketCode": "1238-651-8",
+                                  "QuantityTicketRemaining": 30,
+                                  "QuantityTicket": 30
+                              }
+                          ],
+                          "QuantityTicket": 2,
+                          "TicketPackageName": "Vé tháng người lớn",
+                          "TicketPackageCode": "thang_nguoi_lon",
+                          "UnitPriceTicket": 750000,
+                          "TotalPriceTicket": 1500000
+                      }
+                  ],
+                  "PageNumber": 1,
+                  "PageSize": 10,
+                  "TotalPages": 1
+              },
+              "statusCodes": 200
+          }

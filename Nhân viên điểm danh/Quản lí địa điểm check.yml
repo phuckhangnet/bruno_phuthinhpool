@@ -1,0 +1,30 @@
+info:
+  name: Quản lí địa điểm check
+  type: http
+  seq: 4
+
+http:
+  method: POST
+  url: "{{url}}/Check/QuanLyDiaDiemCheck"
+  headers:
+    - name: x-api-key
+      value: "{{apiKey}}"
+  body:
+    type: json
+    data: |-
+      {
+          "loai": 2,
+          "iddiadiem": 3,
+          "tendiadiem": "Điểm Check Thử Nghiệm",
+          "diachi": "123 Đường ABC, Quận 1, TP. HCM",
+          "macheck": "QRTEST001",
+          "latitude": "10.762622",
+          "longitude": "106.660172"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

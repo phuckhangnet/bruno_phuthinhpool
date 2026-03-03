@@ -1,0 +1,78 @@
+info:
+  name: Tạo mới
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{url}}/Printer/Label/Create"
+  headers:
+    - name: x-api-key
+      value: "{{apiKey}}"
+  body:
+    type: json
+    data: |-
+      {
+          "idNhanVien":132,
+          "idCuaHang":1,
+          "danhSachInNhan":"{\ndff\"donhanglienhe\": 1,\n\"dienthoai\": \"091430n"
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Tạo mới
+    request:
+      url: "{{url}}/Printer/Label/Create"
+      method: POST
+      headers:
+        - name: x-api-key
+          value: "{{apiKey}}"
+      body:
+        type: json
+        data: |-
+          {
+              "idNhanVien":66,
+              "idCuaHang":0,
+              "danhSachInNhan":"{\ndff\"donhanglienhe\": 1,\n\"dienthoai\": \"091430n"
+          }
+    response:
+      statusText: "200"
+      headers:
+        - name: Content-Type
+          value: application/json; charset=utf-8
+        - name: Date
+          value: Tue, 19 Nov 2024 09:34:29 GMT
+        - name: Server
+          value: Microsoft-IIS/10.0
+        - name: Content-Encoding
+          value: gzip
+        - name: Transfer-Encoding
+          value: chunked
+        - name: Vary
+          value: Accept-Encoding
+        - name: Request-Context
+          value: appId=cid-v1:7b29a27b-1ca8-4676-9588-932f5c4495e1
+        - name: X-Powered-By
+          value: ASP.NET
+      body:
+        type: json
+        data: |-
+          {
+              "message": "Create printe label successfully",
+              "metadata": {
+                  "id": 7,
+                  "idNhanVien": 66,
+                  "idCuaHang": 0,
+                  "danhSachInNhan": "{\ndff\"donhanglienhe\": 1,\n\"dienthoai\": \"091430n",
+                  "ngayTao": "2024-11-19T16:34:17.867"
+              },
+              "statusCodes": 200
+          }

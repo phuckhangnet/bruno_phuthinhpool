@@ -1,0 +1,24 @@
+info:
+  name: Xoá tài khoản
+  type: http
+  seq: 7
+
+http:
+  method: POST
+  url: "{{url}}/Auth/Customer/DeleteAccount"
+  headers:
+    - name: x-api-key
+      value: "{{apiKey}}"
+  body:
+    type: json
+    data: |-
+      {
+          "CustomerId": 59
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

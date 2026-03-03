@@ -1,0 +1,28 @@
+info:
+  name: Xác nhân trả sản phẩm thuê tại quầy
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{url}}/CheckInOutCustomer/ForCustomer/CheckOut/Confirm/ReturnProduct"
+  headers:
+    - name: x-api-key
+      value: "{{apiKey}}"
+  body:
+    type: json
+    data: |-
+      {
+          "PoolQRCode":"CHECKOUTATTHEBAR-PT", // Mã  check out tại quầy hồ bơi (cố định trong db)
+          //  "CustomerId":59, // Tuỳ chọn cho khách hàng đã đăng nhập
+          "DeviceId": "112233",
+          "OrderDetailId": 552,
+          "ProductDamaged": false // true | false
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

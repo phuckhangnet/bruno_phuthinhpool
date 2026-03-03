@@ -1,0 +1,24 @@
+info:
+  name: Lấy tổng số khách đang bơi trong hồ
+  type: http
+  seq: 5
+
+http:
+  method: POST
+  url: "{{url}}/Pool/TotalSwimmers"
+  headers:
+    - name: x-api-key
+      value: "{{apiKey}}"
+  body:
+    type: json
+    data: |-
+      {
+          "PoolId":1
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

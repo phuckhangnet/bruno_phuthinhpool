@@ -1,0 +1,74 @@
+info:
+  name: Cập nhật
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{url}}/Printer/Label/Update"
+  headers:
+    - name: x-api-key
+      value: "{{apiKey}}"
+  body:
+    type: json
+    data: |-
+      {
+          "id": 4,
+          "idNhanVien":132,
+          "idCuaHang":1,
+          "danhSachInNhan":"{\"tonggiaban\":5500000,\"thoigianbaohanh\":\"-1\",\"khoiluong\":\"0\"}],\n\"ngaysinh\":\"\" ,\n\"nhantaicuahang\": 1,\n\"phiship\": 0,\n\"magiamgia\": \"\",\n\"sotiengiam\": 0,\n\"magiamgias\": \"\",\n\"sotiengiamtrensanpham\": 0,\n\"idnguoithuchien\": 0,\n\"ho\": \"\",\n\"ten\": \"0933333333\",\n\"vat\": 0,\n\"madonchung\": \"PK00001381\"\n}\n"
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Update
+    request:
+      url: "{{url}}/Printer/Label/Update"
+      method: PUT
+      headers:
+        - name: x-api-key
+          value: "{{apiKey}}"
+      body:
+        type: json
+        data: |-
+          {
+              "id": 1,
+              "idNhanVien":66,
+              "idCuaHang":0,
+              "danhSachInNhan":"{\"tonggiaban\":5500000,\"thoigianbaohanh\":\"-1\",\"khoiluong\":\"0\"}],\n\"ngaysinh\":\"\" ,\n\"nhantaicuahang\": 1,\n\"phiship\": 0,\n\"magiamgia\": \"\",\n\"sotiengiam\": 0,\n\"magiamgias\": \"\",\n\"sotiengiamtrensanpham\": 0,\n\"idnguoithuchien\": 0,\n\"ho\": \"\",\n\"ten\": \"0933333333\",\n\"vat\": 0,\n\"madonchung\": \"PK00001381\"\n}\n"
+          }
+    response:
+      statusText: "200"
+      headers:
+        - name: Content-Type
+          value: application/json; charset=utf-8
+        - name: Date
+          value: Tue, 19 Nov 2024 09:34:13 GMT
+        - name: Server
+          value: Microsoft-IIS/10.0
+        - name: Content-Encoding
+          value: gzip
+        - name: Transfer-Encoding
+          value: chunked
+        - name: Vary
+          value: Accept-Encoding
+        - name: Request-Context
+          value: appId=cid-v1:7b29a27b-1ca8-4676-9588-932f5c4495e1
+        - name: X-Powered-By
+          value: ASP.NET
+      body:
+        type: json
+        data: |-
+          {
+              "message": "Update Print Label Failed",
+              "metadata": null,
+              "statusCodes": 1037
+          }

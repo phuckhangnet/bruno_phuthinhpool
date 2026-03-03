@@ -1,0 +1,81 @@
+info:
+  name: Lấy thông tin in nhãn
+  type: http
+  seq: 4
+
+http:
+  method: POST
+  url: "{{url}}/Printer/Label/GetByStoreIdAndEmployeeId"
+  headers:
+    - name: x-api-key
+      value: "{{apiKey}}"
+  body:
+    type: json
+    data: |-
+      {
+          "storeId":1,
+          "employeeId":132
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Get by Store id and employee id
+    request:
+      url: "{{url}}/Printer/Label/GetByStoreIdAndEmployeeId?idCuaHang=0&idNhanVien=13"
+      method: GET
+      headers:
+        - name: x-api-key
+          value: "{{apiKey}}"
+      params:
+        - name: idCuaHang
+          value: "0"
+          type: query
+        - name: idNhanVien
+          value: "13"
+          type: query
+      body:
+        type: json
+        data: ""
+    response:
+      statusText: "200"
+      headers:
+        - name: Content-Type
+          value: application/json; charset=utf-8
+        - name: Date
+          value: Tue, 19 Nov 2024 09:33:24 GMT
+        - name: Server
+          value: Microsoft-IIS/10.0
+        - name: Content-Encoding
+          value: gzip
+        - name: Transfer-Encoding
+          value: chunked
+        - name: Vary
+          value: Accept-Encoding
+        - name: Request-Context
+          value: appId=cid-v1:7b29a27b-1ca8-4676-9588-932f5c4495e1
+        - name: X-Powered-By
+          value: ASP.NET
+      body:
+        type: json
+        data: |-
+          {
+              "message": "Get print label successfully",
+              "metadata": [
+                  {
+                      "id": 4,
+                      "idCuaHang": 0,
+                      "idNhanVien": 13,
+                      "danhSachInNhan": "[{\"IDSanPham\":1237},{\"IDSanPham\":1231}]",
+                      "ngayTao": "2024-10-30T18:21:27.557"
+                  }
+              ],
+              "statusCodes": 200
+          }

@@ -1,0 +1,66 @@
+info:
+  name: Khách hàng check QR cổng và quầy thông tin
+  type: http
+  seq: 6
+
+http:
+  method: POST
+  url: "{{url}}/CheckInOutCustomer/ForCustomer/GetInfoQRCheck"
+  headers:
+    - name: x-api-key
+      value: "{{apiKey}}"
+  body:
+    type: json
+    data: |-
+      {
+          "PoolQRCode":"CHECKIN-PT", //CHECKIN-PT | CHECKOUTATTHEBAR-PT | CHECKOUTATTHEGATE-PT
+          //  "CustomerId":59, // Tuỳ chọn cho khách hàng đã đăng nhập
+          "DeviceId":"717e474033f01db2665233235fa7807c" // Tuỳ chọn cho khách vãng lai 
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Xác nhận check in
+    request:
+      url: "{{url}}/CheckInOutCustomer/ConfirmCheckIn"
+      method: POST
+      headers:
+        - name: x-api-key
+          value: "{{apiKey}}"
+      body:
+        type: json
+        data: |-
+          {
+              "CardCode":"112235",
+              "EmployeeId":14 
+          }
+    response:
+      statusText: "200"
+      headers:
+        - name: Content-Length
+          value: "198"
+        - name: Content-Type
+          value: application/json; charset=utf-8
+        - name: Date
+          value: Mon, 21 Apr 2025 05:03:19 GMT
+        - name: Server
+          value: Kestrel
+      body:
+        type: json
+        data: |-
+          {
+              "message": "Khách hàng vào cổng thành công",
+              "metadata": {
+                  "CustomerId": 1,
+                  "FullName": "Khách Vãng Lai",
+                  "CardCode": "112235",
+                  "Message": "Khách hàng vào cổng thành công"
+              },
+              "statusCodes": 1105
+          }

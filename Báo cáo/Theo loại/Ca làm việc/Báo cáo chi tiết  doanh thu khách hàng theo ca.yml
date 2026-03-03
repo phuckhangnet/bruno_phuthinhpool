@@ -1,0 +1,30 @@
+info:
+  name: Báo cáo chi tiết  doanh thu khách hàng theo ca
+  type: http
+  seq: 4
+
+http:
+  method: POST
+  url: "{{url}}/Report/Type/WorkShift/Revenue/Detail/Customer"
+  headers:
+    - name: x-api-key
+      value: "{{apiKey}}"
+  body:
+    type: json
+    data: |-
+      {
+          "PoolId": 1,
+          "EmployeeId": 14,
+          "FromDate":"2025-07-01",
+          "ToDate":"2025-08-30",
+          "Top": 10, // Number || null
+          "Sort": "ASC" ,// ASC | DESC || null
+          "SearchText": ""
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

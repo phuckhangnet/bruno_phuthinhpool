@@ -1,0 +1,56 @@
+info:
+  name: Tạo mới sản phẩm kết hợp
+  type: http
+  seq: 4
+
+http:
+  method: POST
+  url: "{{url}}/ProductCombos/Create"
+  headers:
+    - name: x-api-key
+      value: pkn
+    - name: userIdLogin
+      value: "88"
+  body:
+    type: json
+    data: |-
+      {
+          // productType: VE_BOI | PHU_KIEN_DO_CHOI | AN_UONG
+          "comboName": "Summer Combo 1",
+          "salePrice": 1500000.00, // Giá bán
+          "totalPrice": 1800000.00, // Tổng tiền 
+          "startDate": "2025-07-01",
+          "endDate": "2025-07-31",
+          "maxAdditionalQuantity": 10,
+          "fixedProducts": [
+              {
+                  "productId": 1,
+                  "quantity": 2,
+                  "productType": "VE_BOI"
+              },
+              {
+                  "productId": 2,
+                  "quantity": 1,
+                  "productType": "PHU_KIEN_DO_CHOI"
+              }
+          ],
+          "optionalProducts": [
+              {
+                  "productId": 3,
+                  "quantity": 3,
+                  "productType": "VE_BOI"
+              },
+              {
+                  "productId": 4,
+                  "quantity": 2,
+                  "productType": "AN_UONG"
+              }
+          ]
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

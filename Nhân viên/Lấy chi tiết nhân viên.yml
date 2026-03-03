@@ -1,0 +1,95 @@
+info:
+  name: Lấy chi tiết nhân viên
+  type: http
+  seq: 5
+
+http:
+  method: POST
+  url: "{{url}}/Employee/GetDetailById"
+  headers:
+    - name: x-api-key
+      value: "{{apiKey}}"
+  body:
+    type: json
+    data: |-
+      {
+          "EmployeeID": 62
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Lấy chi tiết nhân viên
+    request:
+      url: "{{url}}/Employee/GetDetailById"
+      method: POST
+      headers:
+        - name: x-api-key
+          value: "{{apiKey}}"
+      body:
+        type: json
+        data: |-
+          {
+              "EmployeeID": 48
+          }
+    response:
+      statusText: "200"
+      headers:
+        - name: Content-Length
+          value: "855"
+        - name: Content-Type
+          value: application/json; charset=utf-8
+        - name: Date
+          value: Wed, 02 Apr 2025 10:36:33 GMT
+        - name: Server
+          value: Kestrel
+      body:
+        type: json
+        data: |-
+          {
+              "message": "Thành công",
+              "metadata": {
+                  "Id": 48,
+                  "Account": null,
+                  "LastName": "hauphvn6",
+                  "FirstName": "Long nv",
+                  "PhoneNumber": "0967900802",
+                  "Email": "hauphvn6@gmail.com",
+                  "NationalId": "0123456789",
+                  "Birthday": "2025-02-18T00:00:00",
+                  "RoleId": 5,
+                  "RoleName": "Phục vụ",
+                  "RoleCode": "phucvu",
+                  "IsLock": null,
+                  "Gender": 1,
+                  "ContractType": "chinh_thuc",
+                  "ContractTypeName": "Chính thức",
+                  "Notes": null,
+                  "CountryName": "Việt Nam",
+                  "StateName": "Đồng Nai",
+                  "CityName": "TP. Biên Hòa",
+                  "Address": "15 Nguyễn Bỉnh Khiêm, Long Khánh",
+                  "Certificates": [
+                      {
+                          "ID": "29",
+                          "CertificateName": "Chứng chỉ bơi 1",
+                          "ExpiryDate": "2025-02-16",
+                          "Notes": "Bảng sao chứng chỉ",
+                          "FileUrl": "/_imageslibrary/coachcertificates/29.pdf"
+                      },
+                      {
+                          "ID": "30",
+                          "CertificateName": "Chứng chỉ bơi 2",
+                          "ExpiryDate": "2026-02-18",
+                          "Notes": "",
+                          "FileUrl": "/_imageslibrary/coachcertificates/30.pdf"
+                      }
+                  ]
+              },
+              "statusCodes": 200
+          }

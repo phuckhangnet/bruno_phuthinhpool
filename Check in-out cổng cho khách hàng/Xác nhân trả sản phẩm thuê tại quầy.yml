@@ -1,0 +1,25 @@
+info:
+  name: Xác nhân trả sản phẩm thuê tại quầy
+  type: http
+  seq: 4
+
+http:
+  method: POST
+  url: "{{url}}/CheckInOutCustomer/CheckOut/Confirm/ReturnProduct"
+  headers:
+    - name: x-api-key
+      value: "{{apiKey}}"
+  body:
+    type: json
+    data: |-
+      {
+          "OrderDetailId":729,
+          "ProductDamaged":true // true | false
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

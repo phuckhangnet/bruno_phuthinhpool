@@ -1,0 +1,23 @@
+info:
+  name: Lấy danh sách danh mục chi phí
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{url}}/Cost/Categories"
+  headers:
+    - name: x-api-key
+      value: "{{apiKey}}"
+    - name: userIdLogin
+      value: "14"
+  body:
+    type: json
+    data: ""
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

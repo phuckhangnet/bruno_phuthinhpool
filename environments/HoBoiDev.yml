@@ -1,0 +1,8 @@
+name: HoBoiDev
+variables:
+  - name: token
+    value: ""
+  - name: url
+    value: http://localhost:7234/api
+  - name: apiKey
+    value: pkn

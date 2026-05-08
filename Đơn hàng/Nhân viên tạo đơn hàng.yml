@@ -21,7 +21,7 @@ http:
            "CustomerId": 2,
           //"DeviceId": "717e474033f01db2665233235fa7807c", // Tuỳ chọn cho khách hàng tạo đơn trên app khách hàng
           "PoolCode": "PT",
-          "Email": "hauemail@email.com", // Tuỳ chọn khách vãng lai
+          "Email": "hauphvn@gmail.com", // Tuỳ chọn khách vãng lai
           "Phone": "0967900801", // // Tuỳ chọn khách vãng lai
           "TotalAmount": 20000,
           "PaymentMethod": "CHUYEN_KHOAN", // CHUYEN_KHOAN | TIEN_MAT

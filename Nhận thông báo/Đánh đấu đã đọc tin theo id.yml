@@ -1,11 +1,11 @@
 info:
-  name: Lấy tất cả thông báo
+  name: Đánh đấu đã đọc tin theo id
   type: http
-  seq: 2
+  seq: 3
 
 http:
   method: POST
-  url: "{{url}}/NotificationBadge/GetAll"
+  url: "{{url}}/NotificationBadge/MarkAsRead"
   headers:
     - name: x-api-key
       value: "{{apiKey}}"
@@ -15,9 +15,7 @@ http:
     type: json
     data: |-
       {
-          "NotifyType":"DON_HANG_MOI",  // THONG_BAO DON_HANG | UU_DAI 
-          "PageNumber": 1,
-          "PageSize": 30
+          "NotifyId":1
       }
   auth:
     type: bearer

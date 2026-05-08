@@ -2,6 +2,17 @@ opencollection: 1.0.0
 
 info:
   name: PhuThinhPool
+config:
+  proxy:
+    inherit: true
+    config:
+      protocol: http
+      hostname: ""
+      port: ""
+      auth:
+        username: ""
+        password: ""
+      bypassProxy: ""
 
 request:
   variables:
@@ -9,162 +20,6 @@ request:
       value: "1"
     - name: base_url
       value: https://postman-rest-api-learner.glitch.me/
-
-docs:
-  content: |-
-    ## Tài liệu SignalR Notification Hub
-
-    Dùng cho thông báo (Badge) ứng dụng khách hàng và quản lý
-
-    ### 1\. URL kết nối Hub
-
-    Tất cả các kết nối SignalR sẽ được thiết lập với Hub có tên `NotificationHub`.
-
-    - **Endpoint:** {{url}}`/notificationHub`
-        
-
-    ### 2\. Yêu cầu xác thực
-
-    Kết nối SignalR yêu cầu xác thực bằng **JWT Bearer Token**.
-
-    - **Header:** `Authorization: Bearer`
-        
-
-    ### 3\. Phương thức Server-to-Client (Backend đẩy xuống Frontend)
-
-    Các phương thức Frontend cần lắng nghe:
-
-    #### 3.1. `ReceiveNewOrderNotification`
-
-    - **Mô tả:** App khách hàng tạo đơn thì app QL sẽ nhận được một mẫu tin từ BE
-        
-    - **Kiểu dữ liệu tham số:** `object` (JSON payload)
-        
-    - `{ "Id": 123, "TypeMessage": "OrderNew", "Title": "Đơn hàng mới!", "Content": "Khách hàng [Tên khách hàng] vừa đặt một đơn hàng mới.", "CreatedDate": "2025-07-21T14:30:00Z" }`
-        
-    - JavaScriptconnection.on("**ReceiveNewOrderNotification**", (payload) => { console.log("Thông báo đơn hàng mới:", payload); // Hiển thị thông báo này lên UI;
-        
-
-    #### 3.2. `PermissionsChangedRequireRelogin`
-
-    - **Mô tả:** Gửi thông báo khi quyền hạn của người dùng đã thay đổi và yêu cầu họ đăng nhập lại để làm mới phiên.
-        
-    - **Kiểu dữ liệu tham số:** `string`
-        
-    - Chi tiết bổ sung sau.
-        
-
-    #### 3.3. `ReceiveError`
-
-    - **Mô tả:** Gửi một thông báo lỗi chung từ máy chủ nếu có vấn đề xảy ra trong quá trình xử lý yêu cầu từ client.
-        
-    - **Kiểu dữ liệu tham số:** `string`
-        
-    - **Ví dụ dữ liệu nhận được:** `"Đã xảy ra lỗi duyệt thông báo: [Chi tiết lỗi]"`
-        
-    - JavaScriptconnection.on("**ReceiveError**", (errorMessage) => { console.error("Lỗi từ máy chủ SignalR:", errorMessage); alert(\`Lỗi: ${errorMessage}\`);});
-        
-
-    ### 4\. Phương thức Client-to-Server (Frontend gọi lên Backend)
-
-    Các phương thức Frontend sẽ gọi (invoke) đến BE:
-
-    #### 4.1. `MarkAsRead`
-
-    - **Mô tả:** Đánh dấu một thông báo cụ thể là đã đọc trong cơ sở dữ liệu.
-        
-    - **Kiểu dữ liệu tham số gửi đi:** `number`
-        
-    - **Ví dụ tham số:** `123` (ID của thông báo cần đánh dấu)
-        
-    - **Kết quả mong đợi:** Sau khi xử lý, server sẽ gửi lại một thông báo `UpdateNotificationBadge` để cập nhật số lượng thông báo chưa đọc.
-        
-    - // Giả sử 'connection' là đối tượng HubConnection đã được khởi tạo  
-        `async function markNotificationAsRead(notificationId) { try { await connection.invoke("MarkAsRead", notificationId); console.log(Đã gửi yêu cầu đánh dấu thông báo ${notificationId} là đã đọc.); server sẽ gửi lại UpdateNotificationBadge } catch (err) { console.error("Lỗi khi gọi MarkAsRead:", err); } }`
-        
-
-    ---
-
-    ### Ví dụ cấu hình và sử dụng chung trên Frontend (React Native - TypeScript)
-
-    ## Bảng Mã Kết Quả API
-
-    | Mã lỗi | Mô tả |
-    | --- | --- |
-    | 200 | Thành công |
-    | 201 | Đã tạo |
-    | 400 | Yêu cầu không hợp lệ |
-    | 401 | Chưa được xác thực |
-    | 403 | Bị cấm |
-    | 404 | Không tìm thấy |
-    | 500 | Lỗi máy chủ nội bộ |
-    | 1000 | Đã tồn tại |
-    | 1001 | Tài khoản không tồn tại |
-    | 1002 | Tài khoản không đúng |
-    | 1003 | Mật khẩu không đúng |
-    | 1004 | ID vai trò không đúng |
-    | 1005 | ID cửa hàng không đúng |
-    | 1006 | Token không đúng |
-    | 1007 | Refresh token không đúng |
-    | 1008 | Giải mã không thành công |
-    | 1009 | Đặt hàng thất bại |
-    | 1010 | Không tìm thấy sản phẩm |
-    | 1011 | Sản phẩm không đủ |
-    | 1012 | Không tìm thấy dịch vụ bổ sung |
-    | 1013 | Không tìm thấy chi tiết dịch vụ bổ sung |
-    | 1014 | Không tìm thấy khách hàng |
-    | 1015 | Tạo khách hàng thất bại |
-    | 1016 | Khách hàng trùng khóa hoặc vi phạm khóa duy nhất |
-    | 1017 | Lấy thông số kết nối thất bại |
-    | 1018 | Tạo đơn hàng nháp thất bại |
-    | 1019 | Cập nhật đơn hàng nháp thất bại |
-    | 1020 | Xóa đơn hàng nháp thất bại |
-    | 1021 | Lấy đơn hàng nháp thất bại |
-    | 1022 | Đơn hàng nháp đã tồn tại |
-    | 1023 | Không tìm thấy nhân viên |
-    | 1024 | Không tìm thấy cửa hàng |
-    | 1025 | Xóa tệp tin thất bại |
-    | 1026 | Cập nhật tệp tin thất bại |
-    | 1027 | Kích thước tệp tin quá lớn |
-    | 1028 | Số điện thoại đã tồn tại |
-    | 1029 | Tài khoản đã tồn tại |
-    | 1030 | Email đã tồn tại |
-    | 1031 | Bạn không có quyền thực hiện thao tác này |
-    | 1032 | Yêu cầu loại tệp tin |
-    | 1033 | Tạo cửa hàng thất bại |
-    | 1034 | Lưu ảnh thất bại |
-    | 1035 | Mã cửa hàng bị trùng lặp |
-    | 1036 | Quyền bị từ chối |
-    | 1037 | Cập nhật nhãn in thất bại |
-    | 1038 | Lấy nhãn in thất bại |
-    | 1039 | Môi trường không tìm thấy |
-    | 1040 | Đầu vào không hợp lệ |
-    | 1041 | Tài khoản này đã bị khóa |
-    | 1042 | Lấy email thất bại |
-    | 1043 | Gửi email thất bại |
-    | 1044 | Địa chỉ đã tồn tại |
-    | 1045 | Email hoặc số điện thoại bị thiếu |
-    | 1046 | Email không tìm thấy |
-    | 1047 | Số điện thoại không tìm thấy |
-    | 1048 | Số điện thoại không hợp lệ |
-    | 1049 | Tạo mã OTP thất bại |
-    | 1050 | Thành công: Tạo mã OTP thành công |
-    | 1051 | Không tìm thấy mã OTP |
-    | 1052 | Thành công: Mã OTP đã được xác minh |
-    | 1053 | Mã OTP không khớp |
-    | 1054 | Mã OTP đã hết hạn |
-    | 1055 | Mã OTP đã được sử dụng |
-    | 1056 | Không tìm thấy mẫu Zalo OA |
-    | 1057 | Email bị thiếu |
-    | 1058 | Email, số điện thoại hoặc AppleId bị thiếu |
-    | 1059 | Đăng ký nhân viên thất bại |
-    | 1060 | Đăng nhập thất bại |
-    | 1061 | Lưu thông tin token thất bại |
-    | 1062 | Mật khẩu mới không được trùng với mật khẩu cũ |
-    | 1063 | Mật khẩu không được để trống |
-    | 1064 | Cập nhật khách hàng thất bại |
-    | 1065 | Thêm mới nhân viên thất bại |
-  type: text/markdown
 bundled: false
 extensions:
   bruno:

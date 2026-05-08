@@ -5,3 +5,29 @@ info:
 
 request:
   auth: inherit
+
+docs:
+  content: |
+    | Type | Constant | Event Method |
+    |------|----------|--------------|
+    | New Order | `DON_HANG_MOI` | `ReceiveNewOrderNotification` 
+    | Permission | `THAY_DOI_QUYEN` | `ReceivePermissionChangedNotification` 
+    | Promotion | `KHUYEN_MAI` | `ReceivePromotionNotification` 
+
+    Link signal :{apiUrl}/notificationHub
+
+    #### Payload cho đơn hàng mới
+
+    ```csharp
+    var payload = new {
+        Id = 1,
+        TypeMessage = "DON_HANG_MOI",
+        TotalMessageUnread = 5,
+        Title = "Đơn hàng mới!",
+        Content = "Khách hàng Nguyễn Văn A vừa đặt một đơn hàng mới.",
+        CreatedDate = DateTime.Now
+    };
+
+
+    ```
+  type: text/markdown

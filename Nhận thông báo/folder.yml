@@ -30,4 +30,15 @@ docs:
 
 
     ```
+
+    ### Firebase notification
+
+    ```csharp
+     new Dictionary<string, object>
+                    {
+                        { "orderId", order.ID },
+                        { "customerName", customer.Ho + " " + customer.Ten },
+                        { "orderCode", order.MaDonHang }
+                    },
+    ```
   type: text/markdown

@@ -11,10 +11,12 @@ http:
       value: "{{apiKey}}"
   body:
     type: json
-    data: |-
-      {
-      {"CardCode": "Phúc Khang Net", "EmployeeId": 162,
-      }
+    data: |2-
+      
+        {
+          "CardCode": "DHD0A7C34ADDCA",// mã thẻ, mã đơn hàng 
+          "EmployeeId": 181,
+        }
   auth: inherit
 
 settings:

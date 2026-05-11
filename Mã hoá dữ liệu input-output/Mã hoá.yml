@@ -15,9 +15,9 @@ http:
       {
           // "Account": "Demo005",
           // "Password": "710435",
-              "Account": "mydung",
+              "Account": "hauphvn",
           "Password": "123456",
-          "TokenNofitication":"mydung"
+          "TokenNofitication":"hauphvn"
       }
   auth: inherit
 

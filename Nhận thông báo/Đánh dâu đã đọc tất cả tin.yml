@@ -15,7 +15,7 @@ http:
     type: json
     data: |-
       {
-          "NotifyType":"DON_HANG"  // THONG_BAO DON_HANG | UU_DAI 
+          "NotifyType":"DON_HANG_MOI"  // THONG_BAO DON_HANG | UU_DAI 
       }
   auth:
     type: bearer

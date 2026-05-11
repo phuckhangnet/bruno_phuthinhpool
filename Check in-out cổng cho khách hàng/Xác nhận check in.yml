@@ -13,12 +13,12 @@ http:
     type: json
     data: |-
       {
-          "CardCode":"testdangsudung1",
-          "EmployeeId":14,
-          "TicketIds":[],
+          "CardCode":"DHD0A7C34ADDCA", // Mã đơn hàng, mã thẻ bơi
+          "EmployeeId":181,
+          "TicketIds":[1395],
           "AccessoryOrderDetailIds":[],
           "FoodAndDrinkOrderDetailIds":[],
-          "ClassOrderDetailIds":[24]
+          "ClassOrderDetailIds":[]
       }
   auth: inherit
 

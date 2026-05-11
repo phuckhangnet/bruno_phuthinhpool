@@ -13,7 +13,8 @@ http:
     type: json
     data: |-
       {
-           "CustomerId":2, // Tuỳ chọn cho khách hàng đã đăng nhập
+         //"CustomerId":2, // Tuỳ chọn cho khách hàng đã đăng nhập
+        "OrderCode":"DHD0A7C34ADDCA", // Tuy chon don hang
           // "DeviceId":"0E685834-B344-4C3B-93CA-1C362000499A", // Tuỳ chọn cho khách vãng lai 
       }
   auth: inherit
